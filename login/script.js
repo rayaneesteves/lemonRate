@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const query = document.getElementById('searchQuery').value.trim();
         if (!query) return;
 
-        const url = `${BASE_URL}/search/movie?query=${encodeURIComponent(query)}&include_adult=false&language=pt-BR&page=1&api_key=${API_KEY}`;
+        const url = `${BASE_URL}/search/movie?query=${encodeURIComponent(query)}&include_adult=false&language=pt-BR&page=2&api_key=${API_KEY}`;
 
         const options = {
             method: 'GET',
@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', function () {
             // Verifica se há um poster disponível
             const posterUrl = movie.poster_path
                 ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
-                : 'URL_DE_IMAGEM_PADRAO'; // Substitua pela URL de uma imagem padrão, caso não haja poster
+                : 'https://w7.pngwing.com/pngs/671/351/png-transparent-prohibited-stop-blocked-thumbnail.png'; // Substitua pela URL de uma imagem padrão, caso não haja poster
 
             movieItem.innerHTML = `
                 <div style="display: flex; margin-bottom: 20px;">
