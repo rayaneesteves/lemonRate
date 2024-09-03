@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página de Login</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="login-section">
+            <h2 >BEM-VINDO  </h2>
+           
+            <div id="loginForm">
+                <div class="input-group">
+                    <input type="text" id="username" name="username" placeholder="Usuário" required>
+                </div>
+                <div class="input-group">
+                    <input type="password" id="password" name="password" placeholder="Senha" required>
+                </div>
+                <div class="input-group remember-me">
+                    <input type="checkbox" id="rememberMe" name="rememberMe">
+                    <label for="rememberMe">Lembrar-me</label>
+                </div>
+                <button onclick = "enviarLogin()">ENVIAR</button>
+            </div>
+        </div>
+        <div class="illustration-section">
+            <img src="lemonlemon2.png" alt="Ilustração">
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+<script>
+    var request;
+
+    function enviarLogin() {
+        try {
+            var login = document.getElementById("username").value;
+            var senha = document.getElementById("password").value;
+            request = new XMLHttpRequest();
+            request.addEventListener("readystatechange", processaDadoServidor, false);
+            request.open('GET', 'http://4.228.227.52:8080/atividadelogin/autenticar?email='+login+'&senha='+senha, true);
+            request.send(null);
+            console.log("Aqui 1 ")
+
+        } catch (exception) {
+            alert('problema no envio de dados.')
+        }
+
+    }
+    function processaDadoServidor() {
+        if (request.status == 200 && request.readyState == 4) {
+            let resposta = request.responseText;
+            console.log("Aqui")
+            if(resposta == 'true') {
+                alert("Logado com sucesso.");
+                link
+            }else {
+                alert("Email ou senha incorretos.");
+            }
+
+        } else {
+        }
+    }
+</script>
+
+</html>
