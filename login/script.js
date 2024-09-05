@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const query = document.getElementById('searchQuery').value.trim();
         if (!query) return;
 
-        const url = `${BASE_URL}/search/movie?query=${encodeURIComponent(query)}&include_adult=false&language=pt-BR&page=2&api_key=${API_KEY}`;
+        const url = `${BASE_URL}/search/movie?query=${encodeURIComponent(query)}&include_adult=false&language=pt-BR&page=1&api_key=${API_KEY}`;
 
         const options = {
             method: 'GET',
@@ -18,7 +18,10 @@ document.addEventListener('DOMContentLoaded', function () {
         };
 
         try {
+            console.log("aquii")
             const response = await fetch(url, options);
+            console.log("aquii   2")
+
             const data = await response.json();
             displayResults(data.results);
         } catch (error) {
