@@ -1,12 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Perfil</title>
-    <link rel="stylesheet" href="style.css">
+
+    
+    <link rel="stylesheet" href="perfil.css">
 </head>
+
 <body>
-    <p>ESSE É SEU PERFIL</p>
+    <div class="profile-container">
+        <div class="profile-header">
+            <img src="ibagem.jpg" alt="Profile Picture" class="profile-picture">
+            <h1 class="profile-username">UsuárioTeste</h1>
+        </div>
+        <div class="profile-navigation">
+            <button class="nav-button active">Perfil</button>
+            <button onclick="location.href='avaliacoes.html'" class="nav-button">Avaliações</button>
+            <button onclick="location.href='filmesAssistidos.html'" class="nav-button">Filmes assistidos</button>
+            <button onclick="location.href='listas.html'" class="nav-button">Listas</button>
+        </div>
+        <div class="profile-content">
+            <h2>Filmes favoritos</h2>
+            <p>Não se esqueça de selecionar seus filmes favoritos</p>
+            <div class="recent-activity">
+                <h2>Atividade recente</h2>
+                <div class="activity-item">Sem atividade recente</div>
+            </div>
+            <h2>Descrição</h2>
+            <p>Eu sou legal!!!!</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
 </body>
+
 </html>
