@@ -141,7 +141,7 @@ body {
     height: 100vh;
     color: #fff;
     background-image: url('background.png');
-    background-repeat: no-repeat;
+    background-repeat:round;
     background-position: center;
     background-size: cover;
 }
