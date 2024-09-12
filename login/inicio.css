@@ -37,12 +37,15 @@ nav ul li a {
     text-decoration: none;
     color: #0d2009;
     font-weight: bold;
+    font-size: x-large;
+    font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 .user-options a {
     margin-left: 15px;
     text-decoration: none;
     color: #cee4c6;
+    font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 .user-options img {
@@ -55,29 +58,6 @@ nav ul li a {
     height: auto;
 }
 
-.novidades {
-    text-align: center;
-    padding: 30px;
-}
-
-.novidades h2 {
-    font-size: 24px;
-    margin-bottom: 20px;
-}
-
-.filtros {
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-}
-
-.filtros div {
-    background-color: #cee4c6;
-    padding: 10px 20px;
-    border-radius: 20px;
-    cursor: pointer;
-}
-
 footer {
     text-align: center;
     padding: 20px;
@@ -87,7 +67,7 @@ footer {
 }
 
 body {
-    background-color: black;
+    background-color: rgb(0, 0, 0);
 }
 
 a {
