@@ -131,7 +131,7 @@ body {
     align-items: center;
     height: 100vh;
     color: #fff;
-  background-image: linear-gradient( to right, #000000 -20%, #327e43,#80b645, #8dbb9c  ); 
+  background:radial-gradient(#548b19, #000000  ); 
     background-repeat:round;
     background-position: center;
     background-size: cover;
