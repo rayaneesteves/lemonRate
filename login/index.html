@@ -1,23 +1,39 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LemonRate</title>
     <link rel="stylesheet" href="inicio.css">
 </head>
+
+
+
+
 <body>
     <!-- Cabeçalho -->
+    <script>        
 
+
+
+        function mostrar() {
+            const barra = document.querySelector('input[hidden]');
+            barra.hidden = false;
+        }
+
+    </script>
     <header>
         <div class="logo">
             <img src="logo.png" alt="Logo">
         </div>
         <nav>
             <ul>
-                <li><a href=testeAPI.html>Busca</a></li>
+                <a href="" onclick="mostrar()" id="lupa"><img src="lupa.png" alt="" ; height="40" width="40"></a>
+                <input hidden type="text" id="searchQuery" placeholder="Digite o nome do filme">
+
                 <li><a href="#">Rank</a></li>
-                
+
             </ul>
         </nav>
         <div class="user-options">
@@ -30,38 +46,43 @@
     <section class="banner">
         <img src="backback.png" alt="Imagem do banner">
     </section>
-<footer>
+    <footer>
         <p>Sobre os desenvolvedores &copy; </p>
     </footer>
     <div class="container">
         <table>
-            
+
             <tr>
-               
 
-                <td><a1 href="https://www.instagram.com/ray.inred?igsh=cnNmdTk5NWJ4dWQ3"> <img class="imgpb"
-                            src="rayy.jpeg" alt="" ; height="400" width="400"></a></td>
 
-                <td><a2 href="https://www.instagram.com/mthsur07_?igsh=MTNoNjd6YWNhN3Vidg=="><img class="imgpb"
-                            src="mansurr.jpeg" alt="" ; height="400" width="400"></a></td>
-                           
+                <td>
+                    <a1 href="https://www.instagram.com/ray.inred?igsh=cnNmdTk5NWJ4dWQ3"> <img class="imgpb"
+                            src="rayy.jpeg" alt="" ; height="400" width="400"></a>
+                </td>
+
+                <td>
+                    <a2 href="https://www.instagram.com/mthsur07_?igsh=MTNoNjd6YWNhN3Vidg=="><img class="imgpb"
+                            src="mansurr.jpeg" alt="" ; height="400" width="400"></a>
+                </td>
+
             </tr>
             <tr>
-                <th  >Ray </th>
-                <th >Mansur</th>
+                <th>Ray </th>
+                <th>Mansur</th>
             </tr>
             <tr>
 
-               <td >.</td>
-                
+                <td>.</td>
+
 
                 <td>.
                 </td>
             </tr>
-            
+
         </table>
-        
-                
+
+
     </div>
 </body>
+
 </html>
