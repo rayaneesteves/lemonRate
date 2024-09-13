@@ -8,7 +8,7 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    div { background-image: linear-gradient( to right, #14421e -20%, #25843b,#8dc84e, #92cca4  ); }
+    
 }
  h2{
     margin: 15px;
