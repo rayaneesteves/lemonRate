@@ -19,12 +19,9 @@ body {
 .pesquisa{
     margin: 50px;
     padding: 20px;
-    div { background-image: linear-gradient( to right, #14421e -20%, #25843b,#8dc84e, #92cca4  ); }
-}
-
 .home-container h1 {
     font-size: 2.5em;
-    margin-bottom: 20px;
+    margin-bottom: 20px;}
 }
 
 .buttons {
