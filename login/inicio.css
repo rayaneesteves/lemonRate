@@ -91,6 +91,20 @@ a {
 .imgpb:hover {
     filter: grayscale(0%);
 }
+th{
+    font-size: x-large; color: antiquewhite; font-family: Georgia, 'Times New Roman', Times, serif;
+    text-align: center;
+}
+tr{
+    text-align: justify; font-size: larger;
+}
+td{
+    height: 260px; padding-right: 25; margin-right: 50vh;  text-align: center;
+}
+
+table{
+    text-align: center; width: 90%;
+}
 
 
 
