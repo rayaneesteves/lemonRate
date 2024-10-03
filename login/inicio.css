@@ -108,19 +108,20 @@ table{
     text-align: center; width: 90%;
 }
 .box {
-    width: 300px;
-    height: 200px;
+    width: 500px;
+    height: 350px;
     background-color: grey; 
     display: flex;
-    justify-content: center;
+
     align-items: center;
     border-radius: 10px; 
   }
   
   p {
-    color: white; 
+    color: rgb(6, 24, 7); 
     font-size: 18px;
     font-weight: bold;
+    font-family: 'Times New Roman', Times, serif;
   }
   
 
