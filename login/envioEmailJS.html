@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!--versão mais atual da API-->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <title>MVP envio de Email</title>
+</head>
+<body>
+
+  <form id="email-form">
+    <input type="email" id="user-email" placeholder="enviar para" required><br>
+    <textarea id="message" placeholder="Sua mensagem" required></textarea><br>
+    <button type="submit">MVP envio de Email</button>
+  </form>
+
+  <script type="text/javascript">
+    // Inicia o EmailJS com o seu user ID
+    (function(){
+      emailjs.init("8nWaEQMvVBmNvU5oO");
+    })();
+
+    // Função para enviar e-mail
+    document.getElementById('email-form').addEventListener('submit', function(event) {
+      event.preventDefault();
+
+		//parâmetros do serviço de envio de email
+      const templateParams = {
+        user_email: document.getElementById('user-email').value,
+        message: document.getElementById('message').value,
+		to_name: document.getElementById('user-email').value,
+		from_name: 'SEU_NOME'
+      };
+
+	//configuração dos serviços 
+      emailjs.send('service_1afmibd', 'template_i1eeobd', templateParams)
+        .then(function(response) {
+          alert('E-mail enviado com sucesso :)', response.status, response.text);
+        }, function(error) {
+		  console.log(error);
+          alert('verifique sua conexão ou sua chave', error);
+		  
+        });
+    });
+  </script>
+</body>
+</html>
