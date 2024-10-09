@@ -184,4 +184,7 @@ button:hover {
     transform: scale(1.05);
     background-color: #f0f0f0;
 }
+a{
+    color: #ffffff;
+}
 

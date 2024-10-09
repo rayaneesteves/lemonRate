@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', function () { 
     const API_KEY = 'ef0bda0322a73c50aaa0ed16de544460'; // Substitua pela sua chave da API
     const BASE_URL = 'https://api.themoviedb.org/3';
     const AUTH_TOKEN = 'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlZjBiZGEwMzIyYTczYzUwYWFhMGVkMTZkZTU0NDQ2MCIsIm5iZiI6MTcyNDk0OTkxNC42NjAyMjEsInN1YiI6IjY2YmUyZTMzOWVjOTYxZGMxZGMzOGM5MyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.RawYxp-idwd9FLsehkLjlqUxb8UudvQWkoz_KYEpErw'; // Substitua pelo seu Bearer Token
@@ -18,10 +18,7 @@ document.addEventListener('DOMContentLoaded', function () {
         };
 
         try {
-            console.log("aquii")
             const response = await fetch(url, options);
-            console.log("aquii   2")
-
             const data = await response.json();
             displayResults(data.results);
         } catch (error) {
@@ -48,7 +45,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
             movieItem.innerHTML = `
                 <div style="display: flex; margin-bottom: 20px;">
-                    <img src="${posterUrl}" alt="${movie.title}" style="width: 150px; height: auto; margin-right: 20px;">
+                    <a href="avaliarFilme.html?id=${movie.id}" style="margin-right: 20px;">
+                        <img src="${posterUrl}" alt="${movie.title}" style="width: 150px; height: auto;">
+                    </a>
                     <div>
                         <h2>${movie.title}</h2>
                         <p>${movie.overview}</p>
