@@ -1,4 +1,4 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8">
@@ -13,13 +13,10 @@
       <img src="logo.png" alt="Logo" height="70" width="70" onclick="openSidebar()">
     </div>
     
-    <!-- Barra de pesquisa no centro -->
+    <!-- Barra de pesquisa centralizada -->
     <div class="search-bar">
       <input type="text" id="searchQuery" placeholder="Digite o nome do filme...">
-      <button onclick="searchMovie()">Buscar</button> <br><br>
-      <div id="movieResults"></div>
-      <script src="script.js"></script>
-    
+      <button onclick="searchMovie()">Buscar</button>
     </div>
 
     <!-- Icone de perfil -->
@@ -27,6 +24,9 @@
       <a href="perfil.html"><img src="user-icon.png" alt="User" height="35" width="35"></a>
     </div>
   </header>
+
+  <!-- Resultados da pesquisa -->
+  <div id="movieResults" style="margin-top: 80px;"></div> <!-- Adiciona margens conforme necessário -->
 
   <!-- Sidebar oculta -->
   <div id="sidebar" class="sidebar">
@@ -43,7 +43,6 @@
       <img src="frase.png" alt="Frase">
     </section>
     <br>
-    <br>
     <footer>
       <p style="font-size: large; font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif">Confira os mais populares da semana</p>
     </footer>
@@ -51,6 +50,7 @@
   </main>
 
   <script src="homepage.js"></script>
+  <script src="script.js"></script>
   <script>
     function openSidebar() {
       document.getElementById("sidebar").style.width = "250px";
