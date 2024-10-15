@@ -15,11 +15,16 @@ body {
 
 header {
   display: flex;
-  justify-content: center; /* Centraliza a barra de pesquisa */
+  justify-content: center; 
   align-items: center;
   padding: 10px 20px;
   background-color: #004000;
-  position: relative;
+  position: fixed; 
+  top: 0;
+  left: 0;
+  right: 0; 
+  bottom: 93%;
+  z-index: 1000; 
 }
 
 /* Logo no canto esquerdo */
