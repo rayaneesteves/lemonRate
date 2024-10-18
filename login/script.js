@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', function () {
             .movie-card {
                 display: flex;
                 flex-direction: column;
-                border: 1px solid #ddd;
+                border: 1px solid #8dc84e;
                 border-radius: 8px;
                 padding: 10px;
                 width: 200px;
