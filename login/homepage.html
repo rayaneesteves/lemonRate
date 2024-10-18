@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Filmes Review</title>
   <link rel="stylesheet" href="homepage.css">
+  <style>
+    /* Estilos existentes aqui */
+  </style>
 </head>
 <body>
   
@@ -22,13 +25,15 @@
 
     <!-- Ícone de perfil -->
     <div class="user-profile">
-      <a href="perfil.html" ><img src="user-icon.png" alt="User" height="35" width="35"></a>
+      <a href="perfil.html"><img src="user-icon.png" alt="User" height="35" width="35"></a>
     </div>
   </header>
 
-  
   <div id="movieResults" style="margin-top: 80px;">
-    <script>const style = document.createElement('style');
+    
+    <!-- Resultados da busca aparecerão aqui -->
+  </div>
+  <script>const style = document.createElement('style');
     style.innerHTML = `
       #movieResults {
         max-height: 80vh; 
@@ -53,18 +58,15 @@
     document.head.appendChild(style);
   </script></div>
   
-
-  
-<div id="sidebar" class="sidebar">
-  <a href="javascript:void(0)"class="closebtn" onclick="closeSidebar()"> &times;</a>
-  <a href="#">Adicionar outros usuários</a>
-  <a href="#">Publicações recentes</a>
-  <a href="#">Curtidas</a>
-  <a href="#">Rank</a>
-  <a href="#">Meu perfil</a>
-  <a href="recomendacao.html">Para você</a>
-</div>
-
+  <div id="sidebar" class="sidebar">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeSidebar()"> &times;</a>
+    <a href="#">Adicionar outros usuários</a>
+    <a href="#">Publicações recentes</a>
+    <a href="#">Curtidas</a>
+    <a href="#">Rank</a>
+    <a href="#">Meu perfil</a>
+    <a href="recomendacao.html">Para você</a>
+  </div>
 
   <main>
     <section class="banner">
@@ -79,7 +81,7 @@
   </main>
 
   <script src="homepage.js"></script>
-  <script src="script.js"></script>
+  <script src="script.js"></script> <!-- Agora o JS da busca foi separado neste arquivo -->
   <script>
     function openSidebar() {
       document.getElementById("sidebar").style.width = "250px";
