@@ -32,7 +32,11 @@ header {
   bottom: 93%;
   z-index: 1001; 
 }
+.user-icon {
+  position: absolute;
+    left: 220px;
 
+}
 
 .logo {
   position: absolute;

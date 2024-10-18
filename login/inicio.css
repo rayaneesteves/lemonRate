@@ -220,53 +220,55 @@ table{
 
   .sidebar {
     height: 100%;
-    width: 0; /* Inicialmente escondida */
+    width: 0;
     position: fixed;
-    z-index: 1000;
+    z-index: 1001; 
     top: 0;
     left: 0;
     background-color: #004d00;
     overflow-x: hidden;
-    transition: 0.5s;
+    transition: width 0.5s;
     padding-top: 60px;
 }
 
 .sidebar a {
-    padding: 10px 15px;
-    text-decoration: none;
-    font-size: 18px;
-    color: white;
-    display: block;
-    transition: 0.3s;
+  padding: 10px 15px;
+  text-decoration: none;
+  font-size: 18px;
+  color: white;
+  display: block;
+  transition: background-color 0.3s;
+  top: 100px;
 }
 
 .sidebar a:hover {
-    background-color: #555;
+    background-color: #1e2e13;
 }
 
 .sidebar .closebtn {
     position: absolute;
-    top: 10px;
-    right: 20px;
+    top: 15px; 
+    right: 20px; 
     font-size: 36px;
-    cursor: pointer;
     color: white;
+    cursor: pointer; 
+    z-index: 1003; 
+    transition: color 0.3s; 
 }
 
 .open-sidebar-btn {
     font-size: 24px;
     background-color: transparent;
-    color: white;
+    color: transparent;
     border: none;
-    cursor: pointer;
     position: fixed;
     top: 20px;
     left: 20px;
-    z-index: 1001;
+    z-index: 1002;
 }
 
 .open-sidebar-btn:hover {
-    color: #ccc;
+    color: transparent#ccc;
 }
 
 .sidebar.open {
