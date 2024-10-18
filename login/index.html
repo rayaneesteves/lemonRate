@@ -8,97 +8,81 @@
     <link rel="stylesheet" href="inicio.css">
 </head>
 
-
 <body>
-    <!-- Cabeçalho -->
-    <script>        
 
-
-
-        function mostrar() {
-            const barra = document.querySelector('input[hidden]');
-            barra.hidden = false;
+    <!-- Função JavaScript para abrir e fechar a Sidebar -->
+    <script>
+        function openSidebar() {
+            document.getElementById("sidebar").style.width = "250px";
         }
 
+        function closeSidebar() {
+            document.getElementById("sidebar").style.width = "0";
+        }
     </script>
+
+    <!-- Botão para abrir a Sidebar -->
+    <button class="open-sidebar-btn" onclick="openSidebar()">&#9776; Abrir Menu</button>
+
+    <!-- Sidebar -->
+    <div id="sidebar" class="sidebar">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeSidebar()"> &times;</a>
+        <a href="#">Adicionar outros usuários</a>
+        <a href="#">Publicações recentes</a>
+        <a href="#">Curtidas</a>
+        <a href="#">Rank</a>
+        <a href="#">Meu perfil</a>
+        <a href="recomendacao.html">Para você</a>
+    </div>
+
+    <!-- Cabeçalho -->
     <header>
         <div class="logo">
             <img src="logo.png" alt="Logo">
         </div>
         <div class="search-bar">
-            
             <input type="text" id="searchQuery" placeholder="Digite o nome do filme...">
             <button onclick="searchMovie()">Buscar</button>
             <div id="movieResults" style="margin-top: 80px;"></div>
             <script src="script.js"></script>
-
-            
-          </div>
+        </div>
         <div class="user-options">
-            <a href=login.html>Entrar</a>
-            <a href=cadastro.html>Criar uma conta</a>
+            <a href="login.html">Entrar</a>
+            <a href="cadastro.html">Criar uma conta</a>
         </div>
     </header>
-
+    <script src="script.js"></script>
     <!-- Imagem Banner -->
     <section class="banner">
         <img src="backback.png" alt="Imagem do banner">
     </section>
-    <footer>                        
+
+    <footer>
         <p>Sobre os desenvolvedores &copy; </p>
     </footer>
+
+    <!-- Conteúdo adicional -->
     <div class="container">
         <table>
-
             <tr>
-
-
                 <td>
-                    <a1 href="https://www.instagram.com/ray.inred"> <img class="imgpb"
-                            src="rayy.jpeg" alt="" ; height="400" width="400"></a>
+                    <a href="https://www.instagram.com/ray.inred">
+                        <img class="imgpb" src="rayy.jpeg" alt="" height="400" width="400">
+                    </a>
                 </td>
-
                 <td>
-                    <a2 href="https://www.instagram.com/mthsur07"><img class="imgpb"
-                            src="mansurr.jpeg" alt="" ; height="400" width="400"></a>
+                    <a href="https://www.instagram.com/mthsur07">
+                        <img class="imgpb" src="mansurr.jpeg" alt="" height="400" width="400">
+                    </a>
                 </td>
-
             </tr>
             <tr>
-                <th>Ray </th>
+                <th>Ray</th>
                 <th>Mansur</th>
             </tr>
-            <tr >
-
-                <td >
-
-                    <!--<div class="box">
-                        <p > Imagem Banner Oii, meu nome é Rayane e faço parte da criação e desenvolvimento do LemonRate. Escolhi o curso técnico em informática 
-                            porque desde cedo me encantei com a maneira como a tecnologia transforma e facilita diversas áreas da vida. A possibilidade de entender os sistemas por trás dos softwares e dispositivos sempre me fascinou, e eu queria fazer parte desse mundo em constante evolução. No meu tempo livre, gosto de assistir filmes e séries, ouvir músicas e jogar jogos. Entretanto,
-                             meu verdadeiro interesse sempre esteve ligado à medicina veterinária, motivado pela paixão pelos animais e pelo desejo de contribuir para o bem-estar deles.
-                             Minha expectativa para o futuro é concretizar minha transição de carreira, combinando minha experiência em informática com meus estudos em medicina veterinária para contribuir de forma significativa para a 
-                            saúde e o cuidado dos animais, buscando sempre aprimorar meus conhecimentos e habilidades nesse campo tão gratificante.</p>
-                      </div>-->
-                      
-                </td>
-
-
-                <td ><!--
-                    <div class="box">
-                    <p>Olá, meu nome é Matheus Mansur Ribeiro De Assis, sou um dos desenvolvedores do projeto LemonRate. Escolhi o curso de informática no IFMG por enxergar nele um universo repleto de oportunidades, onde muitas portas serão abertas e por ser fundamental para 
-                        um bom currículo. Gosto da área da informática por ser uma área muito ampla, com diversas opções de escolha e diferentes maneiras de trabalho. Nos meus momentos de lazer, encontro equilíbrio praticando esportes, sendo o principal, o futebol, onde posso liberar o estresse e me manter ativo. Para os próximos anos, 
-                        meu objetivo é focar nos estudos para que eu consiga ser aprovado em uma faculdade. 
-                        Embora ainda não tenha decidido o curso exato que irei seguir, penso muito sobre muitas opções diferentes de carreira para seguir, como agora terei o curso técnico em informática, acho que terei um privilégio durante minhas escolhas.</p>
-                  </div>-->
-                  
-                </td>
-            </tr>
-
         </table>
-
-
     </div>
-    
+
 </body>
 
 </html>
