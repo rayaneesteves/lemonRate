@@ -25,15 +25,15 @@
         <div class="logo">
             <img src="logo.png" alt="Logo">
         </div>
-        <nav>
-            <ul>
-                <a href="" onclick="mostrar()" id="lupa"><img src="lupa.png" alt="" ; height="40" width="40"></a>
-                <input hidden type="text" id="searchQuery" placeholder="Digite o nome do filme">
+        <div class="search-bar">
+            
+            <input type="text" id="searchQuery" placeholder="Digite o nome do filme...">
+            <button onclick="searchMovie()">Buscar</button>
+            <div id="movieResults" style="margin-top: 80px;"></div>
+            <script src="script.js"></script>
 
-                <li><a href="#">Rank</a></li>
-
-            </ul>
-        </nav>
+            
+          </div>
         <div class="user-options">
             <a href=login.html>Entrar</a>
             <a href=cadastro.html>Criar uma conta</a>
@@ -98,6 +98,7 @@
 
 
     </div>
+    
 </body>
 
 </html>
