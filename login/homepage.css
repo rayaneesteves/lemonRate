@@ -30,7 +30,7 @@ header {
   left: 0;
   right: 0; 
   bottom: 93%;
-  z-index: 1000; 
+  z-index: 1001; 
 }
 
 
@@ -177,7 +177,7 @@ button {
   font-size: 36px;
   color: white;
   cursor: pointer; 
-  z-index: 1002; 
+  z-index: 1003; 
   transition: color 0.3s; 
 }
 

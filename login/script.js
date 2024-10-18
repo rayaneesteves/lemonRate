@@ -41,12 +41,11 @@ document.addEventListener('DOMContentLoaded', function () {
             .movie-card {
                 display: flex;
                 flex-direction: column;
-                border: 1px solid #8dc84e;
                 border-radius: 8px;
                 padding: 10px;
                 width: 200px;
                 margin: 10px;
-                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+                box-shadow: 0 5px 5px rgba(0, 0, 0, 0.3); 
                 transition: transform 0.2s;
             }
 
