@@ -1,11 +1,11 @@
-const apiKey = 'ef0bda0322a73c50aaa0ed16de544460'; // Coloque sua chave de API do TMDB aqui
+const apiKey = 'ef0bda0322a73c50aaa0ed16de544460'; 
 const movieContainer = document.getElementById('movies');
 
 async function fetchPopularMovies() {
   const response = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=pt-BR&page=1`);
   const data = await response.json();
   
-  // Pegando apenas os 5 primeiros filmes
+  // Pegando apenas os 9 primeiros filmes
   const popularMovies = data.results.slice(0, 9);
   displayMovies(popularMovies);
 }
