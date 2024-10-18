@@ -18,7 +18,7 @@ body {
   overflow: hidden; 
 }
 
-/* Cabeçalho */
+
 header {
   display: flex;
   justify-content: center; 
@@ -33,7 +33,7 @@ header {
   z-index: 1000; 
 }
 
-/* Logo no canto esquerdo */
+
 .logo {
   position: absolute;
   left: 20px;
@@ -41,7 +41,7 @@ header {
   
 }
 
-/* Barra de pesquisa centralizada */
+
 .search-bar {
   display: flex;
   justify-content: center;
@@ -138,6 +138,7 @@ button {
   margin-top: 10px;
   font-size: 1rem;
   text-align: center;
+  width: 10rem;
 }
 
 
@@ -151,7 +152,7 @@ button {
   background-color: #004d00;
   overflow-x: hidden;
   transition: width 0.5s;
-  padding-top: 60px; /* Para dar espaço ao conteúdo da sidebar */
+  padding-top: 60px; 
 }
 
 .sidebar a {
@@ -170,12 +171,12 @@ button {
 
 .sidebar .closebtn {
   position: absolute;
-  top: 15px; /* Ajustado para mais espaço do topo */
-  right: 20px; /* Mantém o botão no canto direito */
+  top: 15px; 
+  right: 20px; 
   font-size: 36px;
   color: white;
   cursor: pointer; 
-  z-index: 1002; /* Garante que o botão fique acima de outros elementos */
+  z-index: 1002; 
   transition: color 0.3s; 
 }
 
@@ -184,23 +185,25 @@ button {
 }
 
 .sidebar.open {
-  width: 250px; /* Largura da sidebar ao abrir */
-  z-index: 1002; /* Garante que o botão fique sobre outros elementos */
+  width: 250px; 
+  z-index: 1002; 
 }
 
-/* Botão de abrir a sidebar */
+
 .open-sidebar-btn {
   font-size: 24px;
   background-color: transparent;
   color: white;
   border: none;
   cursor: pointer;
-  position: fixed; /* Posiciona o botão fixo na tela */
+  position: fixed; 
   top: 20px;
-  left: 20px; /* Posiciona o botão no canto esquerdo */
-  z-index: 1002; /* Garante que o botão fique sobre outros elementos */
+  left: 20px; 
+  z-index: 1002; 
 }
 
 .open-sidebar-btn:hover {
   color: #ccc;
 }
+
+
