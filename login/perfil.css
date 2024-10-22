@@ -6,6 +6,9 @@ body {
     margin: 0;
     padding: 0;
 }
+p,h2,h1{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
 
 header {
     background-color: #14421e; /* Verde escuro */
