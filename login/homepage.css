@@ -112,6 +112,7 @@ button {
   cursor: pointer;
   color: #368046;
   background-color: #8dc84e;
+  
   border: none;
   border-radius: 15px;
   transition: background-color 0.3s ease;
