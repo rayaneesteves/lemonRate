@@ -7,6 +7,45 @@
     <link rel="stylesheet" href="perfil.css">
 </head>
 <body>
+    <header style=" display: flex;
+    justify-content: center; 
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #004000;
+    position: fixed; 
+    top: 0;
+    left: 0;
+    right: 0; 
+    bottom: 93%;
+    z-index: 1001; 
+  ">
+        <!-- Logo que abre a sidebar -->
+        <div class="logo">
+          <img src="logo.png" alt="Logo" height="70" width="70" onclick="openSidebar()">
+        </div>
+        
+        <!-- Barra de pesquisa centralizada -->
+        <div class="search-bar">
+          <input type="text" id="searchQuery" placeholder="Digite o nome do filme...">
+          <button onclick="searchMovie()">Buscar</button>
+        </div>
+    
+        <!-- Ícone de perfil -->
+        <div class="user-profile">
+          <a href="perfil.html"><img src="user-icon.png" alt="User" height="35" width="35"></a>
+        </div>
+      </header>
+      <div id="sidebar" class="sidebar">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeSidebar()"> &times;</a>
+        <a href="homepage.html">Voltar </a>
+        <a href="#">Adicionar outros usuários</a>
+        <a href="#">Publicações recentes</a>
+        <a href="#">Curtidas</a>
+        <a href="#">Rank</a>
+        <a href="#">Meu perfil</a>
+        <a href="recomendacao.html">Para você</a>
+      </div>
+    
     <header class="profile-header">
         <div class="header-content">
             <div class="profile-avatar-container">
@@ -21,6 +60,8 @@
             </div>
         </div>
     </header>
+    
+    
 
     <main class="profile-main">
         <aside class="profile-sidebar">
@@ -49,6 +90,15 @@
             </div>
         </section>
     </main>
+    <script>
+        function openSidebar() {
+          document.getElementById("sidebar").style.width = "250px";
+        }
+    
+        function closeSidebar() {
+          document.getElementById("sidebar").style.width = "0";
+        }
+      </script>
 
     <script src="perfil.js"></script>
 </body>
