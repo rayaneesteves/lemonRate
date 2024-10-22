@@ -1,38 +1,55 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Perfil</title>
-
-    
+    <title>Painel de Usuário</title>
     <link rel="stylesheet" href="perfil.css">
 </head>
-
 <body>
-    <div class="profile-container">
-        <div class="profile-header">
-            <img src="ibagem.jpg" alt="Profile Picture" class="profile-picture">
-            <h1 class="profile-username">UsuárioTeste</h1>
-        </div>
-        <div class="profile-navigation">
-            <button onclick="location.href='avaliacoes.html'" class="nav-button">Minhas Avaliações</button>
-            <button onclick="location.href='listas.html'" class="nav-button">Favoritos</button>
-        </div>
-        <div class="profile-content">
-            
-            <div class="recent-activity">
-                <h2>Atividade recente</h2>
-                <div class="activity-item">Sem atividade recente</div>
+    <header class="profile-header">
+        <div class="header-content">
+            <div class="profile-avatar-container">
+                <!-- Avatar do usuário -->
+                <img src="user-icon.png" alt="User Avatar" id="profile-avatar" class="profile-avatar">
+                <input type="file" id="avatar-input" style="display:none;" accept="image/*">
             </div>
-            <h2>Descrição</h2>
-            <p>Eu sou legal!!!!</p>
+            <div class="user-info">
+                <h1 id="profile-name">UsuárioTeste</h1>
+                <button id="edit-profile-btn">Editar Perfil</button>
+                <p id="profile-email" class="profile-email">usuario@teste.com</p>
+            </div>
         </div>
-    </div>
+    </header>
 
-    <script src="script.js"></script>
+    <main class="profile-main">
+        <aside class="profile-sidebar">
+            <!-- Botões "Minhas Avaliações" e "Favoritos" -->
+            <nav class="profile-navigation">
+                <button class="nav-btn" id="my-reviews-btn">Minhas Avaliações</button>
+                <button class="nav-btn" id="favorites-btn">Favoritos</button>
+            </nav>
+        </aside>
+
+        <section class="profile-content">
+            <div class="profile-details">
+                <!-- Detalhes do perfil (Nome e Descrição) -->
+                <p><strong>Nome:</strong> <span id="profile-name-view">UsuárioTeste</span></p>
+                <input type="text" id="name-input" style="display:none;" value="UsuárioTeste">
+
+                <p><strong>Descrição:</strong></p>
+                <p id="profile-description">Eu sou legal!!!!</p>
+                <textarea id="description-input" style="display:none;">Eu sou legal!!!!</textarea>
+            </div>
+
+            <!-- Ações de edição -->
+            <div class="profile-actions" style="display:none;" id="edit-actions">
+                <button id="save-profile-btn">Salvar</button>
+                <button id="cancel-edit-btn">Cancelar</button>
+            </div>
+        </section>
+    </main>
+
+    <script src="perfil.js"></script>
 </body>
-
 </html>
