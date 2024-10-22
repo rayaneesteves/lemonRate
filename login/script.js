@@ -86,7 +86,7 @@ document.addEventListener('DOMContentLoaded', function () {
             // Verifica se há um poster disponível
             const posterUrl = movie.poster_path
                 ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
-                : 'https://w7.pngwing.com/pngs/671/351/png-transparent-prohibited-stop-blocked-thumbnail.png'; // Substitua pela URL de uma imagem padrão
+                : 'semimagem.png'; // Substitua pela URL de uma imagem padrão
 
             // Truncate popularity to 3 digits
             const popularity = movie.popularity ? Math.round(movie.popularity) : 'N/A';
