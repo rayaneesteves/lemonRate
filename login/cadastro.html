@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <html lang="pt">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Página de Cadastro</title>
     <link rel="stylesheet" href="style.css">
 </head>
+ 
 <body>
     <div class="container">
         <div class="login-section">
             <h2>CADASTRO</h2>
-            <form id="cadastroForm">
+            <form action="cadastro.php" method="POST">
                 <div class="input-group">
                     <input type="text" id="username" name="username" placeholder="Usuário" required>
                 </div>
@@ -21,7 +23,8 @@
                     <input type="password" id="password" name="password" placeholder="Senha" required>
                 </div>
                 <div class="input-group">
-                    <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirme a Senha" required>
+                    <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirme a Senha"
+                        required>
                 </div>
                 <button onclick="location.href='homepage.html'">Cadastrar</button>
 
@@ -31,6 +34,7 @@
             <img src="lemonlemon2.png" alt="Ilustração">
         </div>
     </div>
-    <script src="cadastro.js"></script>
+    
 </body>
+
 </html>
