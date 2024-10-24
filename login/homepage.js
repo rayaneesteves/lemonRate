@@ -41,5 +41,6 @@ function displayMovies(movies) {
   });
 }
 
+
 // Chama a função para buscar filmes populares ao carregar a página
 fetchPopularMovies();

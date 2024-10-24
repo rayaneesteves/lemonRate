@@ -1,14 +1,19 @@
 <?php
 include_once "conexao.php";
-//receber os dados vindo do form
+
+// Receber os dados vindos do formulário
 $nome = $_POST["username"];
 $email = $_POST["email"];
-$senha = $_POST["password"];
+$senha = $_POST["senha"];
 
+// Hash da senha para maior segurança
+$senha_hashed = password_hash($senha, PASSWORD_DEFAULT);
 
-$sql = "INSERT INTO usuário (idusuario, nome, email, senha, status)
-        VALUES ('1', '$nome', '$email', $senha, '$1')";
+// Query SQL - corrigindo aspas para $senha e removendo o valor fixo de idusuario
+$sql = "INSERT INTO usuário (nome, email, senha, status) 
+        VALUES ('$nome', '$email', '$senha_hashed', '1')";
 
+// Verificando se a query foi bem-sucedida
 if ($conn->query($sql) === true) {
 ?>
     <script>
@@ -19,7 +24,7 @@ if ($conn->query($sql) === true) {
 } else {
 ?>
     <script>
-        alert("Erro ao inserir o registro!");
+        alert("Erro ao inserir o registro: <?= $conn->error ?>");
         window.history.back();
     </script>
 <?php
