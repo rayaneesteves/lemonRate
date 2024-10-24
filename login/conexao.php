@@ -11,6 +11,11 @@ try {
     // Define o modo de erro do PDO para exceção
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 }catch (PDOException $e) {
+    ?>
+    <script>
+        console.log(<?php addslashes($e)?>)
+    </script>
+    <?php
     echo 'Erro: ' . $e->getMessage();
     exit();
 }
