@@ -17,6 +17,5 @@ try {
     </script>
     <?php
     echo 'Erro: ' . $e->getMessage();
-    exit();
 }
 ?>
