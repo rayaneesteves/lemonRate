@@ -18,7 +18,15 @@
     <!-- Barra de pesquisa centralizada -->
     <div class="search-bar">
       <input type="text" id="searchQuery" placeholder="Digite o nome do filme...">
-      <button onclick="searchMovie()">Buscar</button>
+      <button onclick="searchMovie()">Buscar
+        <script>
+          searchQuery.addEventListener('keydown', (event) => {
+            if (event.key === 'Enter') {
+              searchMovie();
+            }
+          });
+        </script>
+      </button>
       
     </div>
 
