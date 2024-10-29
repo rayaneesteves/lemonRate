@@ -10,6 +10,8 @@ async function fetchPopularMovies() {
   displayMovies(popularMovies);
 }
 
+
+searchQuery.addEventListener()
 function displayMovies(movies) {
   movies.forEach(movie => {
     if (movie.poster_path) {
@@ -40,6 +42,11 @@ function displayMovies(movies) {
     }
   });
 }
+searchQuery.addEventListener('keydown', (event) => {
+  if (event.key === 'Enter') {
+    searchMovie();
+  }
+});
 
 
 // Chama a função para buscar filmes populares ao carregar a página
