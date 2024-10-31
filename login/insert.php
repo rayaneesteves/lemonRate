@@ -18,7 +18,7 @@ $sql = "INSERT INTO usuário (nome, email, senha, status)
         VALUES ('$nome', '$email', '$senha_hashed', '1')";
 
 // Verificando se a query foi bem-sucedida
-/*if ($conn->query($sql) === true) {
+if ($conn->query($sql) === true) {
 ?>
     <script>
         alert("Registro salvo com sucesso!");
@@ -32,7 +32,8 @@ $sql = "INSERT INTO usuário (nome, email, senha, status)
         window.history.back();
     </script>
 <?php
-}*/
+echo 'funciona';
+}
 }catch (Exception $e){
     ?>
     <script>
