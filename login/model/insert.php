@@ -3,7 +3,7 @@
 try{
 
 
-include_once "conexao.php";
+include_once "model/conexao.php";
 
 // Receber os dados vindos do formulário
 $nome = $_POST["username"];
