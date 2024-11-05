@@ -86,7 +86,7 @@ document.addEventListener('DOMContentLoaded', function () {
             // Verifica se há um poster disponível
             const posterUrl = movie.poster_path
                 ? `https://image.tmdb.org/t/p/w500${movie.poster_path} `
-                : '/login/imagens/semimagem.png'; // Substitua pela URL de uma imagem padrão ldldmdiiuujd
+                : '/imagens/semimagem.png'; // Substitua pela URL de uma imagem padrão ldldmdiiuujd
                 
                 
             // Truncate popularity to 3 digits
@@ -96,7 +96,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const releaseYear = movie.release_date ? movie.release_date.split('-')[0] : 'N/A';
 
             movieItem.innerHTML = `
-                <a href="/login/view/avaliarFilme.html?id=${movie.id}" style="text-decoration: none; color: inherit;">
+                <a href="/view/avaliarFilme.html?id=${movie.id}" style="text-decoration: none; color: inherit;">
                     <img src="${posterUrl}" alt="${movie.title}">
                     <h2>${movie.title}</h2>
                     <p><strong>Ano:</strong> ${releaseYear}</p>

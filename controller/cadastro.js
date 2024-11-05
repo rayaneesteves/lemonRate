@@ -14,5 +14,5 @@ document.getElementById('cadastroForm').addEventListener('submit', function(even
 
     alert(`Usuário: ${username}\nEmail: ${email}`);
     // Redirecionar para a homepage
-    window.location.href = '/login/view/homepage.html';
+    window.location.href = '/view/homepage.html';
 });
