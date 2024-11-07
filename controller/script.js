@@ -3,6 +3,8 @@ document.addEventListener('DOMContentLoaded', function () {
     const BASE_URL = 'https://api.themoviedb.org/3';
     const AUTH_TOKEN = 'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlZjBiZGEwMzIyYTczYzUwYWFhMGVkMTZkZTU0NDQ2MCIsIm5iZiI6MTcyNDk0OTkxNC42NjAyMjEsInN1YiI6IjY2YmUyZTMzOWVjOTYxZGMxZGMzOGM5MyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.RawYxp-idwd9FLsehkLjlqUxb8UudvQWkoz_KYEpErw'; // Bearer Token
 
+
+    
     async function searchMovie() {
         const query = document.getElementById('searchQuery').value.trim();
         if (!query) return;
@@ -35,6 +37,8 @@ document.addEventListener('DOMContentLoaded', function () {
             return;
         }
 
+
+        
         // Estilos para os cards
         const style = document.createElement('style');
         style.innerHTML = `
@@ -111,4 +115,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Torna a função searchMovie global para que o HTML possa acessá-la
     window.searchMovie = searchMovie;
+
+    
 });
+
+
