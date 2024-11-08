@@ -1,46 +1,42 @@
 <?php
+// Ativar a exibição de erros para depuração
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 
-try{
+try {
+    // Ajuste o caminho para o arquivo de conexão corretamente
+    include_once "../model/conexao.php";
 
+    // Receber os dados vindos do formulário
+    $nome = $_POST["username"];
+    $email = $_POST["email"];
+    $senha = $_POST["senha"];
 
-include_once "model/conexao.php";
+    // Hash da senha para maior segurança
+    $senha_hashed = password_hash($senha, PASSWORD_DEFAULT);
 
-// Receber os dados vindos do formulário
-$nome = $_POST["username"];
-$email = $_POST["email"];
-$senha = $_POST["senha"];
+    // Query SQL usando prepared statement
+    $sql = "INSERT INTO usuário (nome, email, senha, status) VALUES (:nome, :email, :senha, '1')";
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindParam(':nome', $nome);
+    $stmt->bindParam(':email', $email);
+    $stmt->bindParam(':senha', $senha_hashed);
 
-// Hash da senha para maior segurança
-$senha_hashed = password_hash($senha, PASSWORD_DEFAULT);
-
-// Query SQL - corrigindo aspas para $senha e removendo o valor fixo de idusuario
-$sql = "INSERT INTO usuário (nome, email, senha, status) 
-        VALUES ('$nome', '$email', '$senha_hashed', '1')";
-
-// Verificando se a query foi bem-sucedida
-if ($conn->query($sql) === true) {
-?>
-    <script>
-        alert("Registro salvo com sucesso!");
-        window.location = "selecionar-pessoa.php";
-    </script>
-<?php
-} else {
-?>
-    <script>
-        alert("Erro ao inserir o registro: <?= $conn->error ?>");
-        window.history.back();
-    </script>
-<?php
-echo 'funciona';
-}
-}catch (Exception $e){
-    ?>
-    <script>
-        console.log(<?php addslashes($e)?>)
-    </script>
-    <?php
+    // Executa a query e verifica se foi bem-sucedida
+    if ($stmt->execute()) {
+        echo "<script>
+                alert('Registro salvo com sucesso!');
+                window.location = 'selecionar-pessoa.php';
+              </script>";
+    } else {
+        echo "<script>
+                alert('Erro ao inserir o registro.');
+                window.history.back();
+              </script>";
+    }
+} catch (Exception $e) {
+    // Exibir o erro diretamente no navegador
     echo 'Erro: ' . $e->getMessage();
-
 }
 ?>
