@@ -92,6 +92,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 ? `https://image.tmdb.org/t/p/w500${movie.poster_path} `
 
                 : '../imagens/semimagem.png'; // Substitua pela URL de uma imagem padrão 
+
                 
                 
             // Truncate popularity to 3 digits
