@@ -3,6 +3,8 @@ document.addEventListener('DOMContentLoaded', function () {
     const BASE_URL = 'https://api.themoviedb.org/3';
     const AUTH_TOKEN = 'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlZjBiZGEwMzIyYTczYzUwYWFhMGVkMTZkZTU0NDQ2MCIsIm5iZiI6MTcyNDk0OTkxNC42NjAyMjEsInN1YiI6IjY2YmUyZTMzOWVjOTYxZGMxZGMzOGM5MyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.RawYxp-idwd9FLsehkLjlqUxb8UudvQWkoz_KYEpErw'; // Bearer Token
 
+
+    
     async function searchMovie() {
         const query = document.getElementById('searchQuery').value.trim();
         if (!query) return;
@@ -35,6 +37,8 @@ document.addEventListener('DOMContentLoaded', function () {
             return;
         }
 
+
+        
         // Estilos para os cards
         const style = document.createElement('style');
         style.innerHTML = `
@@ -86,7 +90,8 @@ document.addEventListener('DOMContentLoaded', function () {
             // Verifica se há um poster disponível
             const posterUrl = movie.poster_path
                 ? `https://image.tmdb.org/t/p/w500${movie.poster_path} `
-                : '/imagens/semimagem.png'; // Substitua pela URL de uma imagem padrão ldldmdiiuujd
+
+                : '../imagens/semimagem.png'; // Substitua pela URL de uma imagem padrão 
                 
                 
             // Truncate popularity to 3 digits
@@ -96,7 +101,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const releaseYear = movie.release_date ? movie.release_date.split('-')[0] : 'N/A';
 
             movieItem.innerHTML = `
-                <a href="/login/view/avaliarFilme.html?id=${movie.id}" style="text-decoration: none; color: inherit;">
+                <a href="..view/avaliarFilme.html?id=${movie.id}" style="text-decoration: none; color: inherit;">
                     <img src="${posterUrl}" alt="${movie.title}">
                     <h2>${movie.title}</h2>
                     <p><strong>Ano:</strong> ${releaseYear}</p>
@@ -111,4 +116,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Torna a função searchMovie global para que o HTML possa acessá-la
     window.searchMovie = searchMovie;
+
+    
 });
+
+
