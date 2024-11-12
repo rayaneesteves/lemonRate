@@ -102,7 +102,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const releaseYear = movie.release_date ? movie.release_date.split('-')[0] : 'N/A';
 
             movieItem.innerHTML = `
-                <a href="..view/avaliarFilme.html?id=${movie.id}" style="text-decoration: none; color: inherit;">
+                <a href="../view/avaliarFilme.html?id=${movie.id}" style="text-decoration: none; color: inherit;">
                     <img src="${posterUrl}" alt="${movie.title}">
                     <h2>${movie.title}</h2>
                     <p><strong>Ano:</strong> ${releaseYear}</p>
