@@ -118,7 +118,8 @@ document.addEventListener('DOMContentLoaded', function () {
     // Torna a função searchMovie global para que o HTML possa acessá-la
     window.searchMovie = searchMovie;
 
-    
+
+
 });
 
 

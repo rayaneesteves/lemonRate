@@ -1,21 +1,22 @@
 <?php
-// Parâmetros de conexão com o banco de dados
-define('HOST', 'localhost');
-define('PORT', 3307); // Porta específica do MySQL
-define('USER', 'lemonrate@localhost'); // Nome do usuário
-define('PASSWORD', 'U_FY%jd$J~'); // Senha do usuário
-define('DB', 'lemonrate_db'); // Nome do banco de dados
+// Configurações do banco de dados
+$host = '52.233.90.226'; // Ajuste para o ambiente correto
+$dbname = 'lemonrate_db';
+$username = 'lemonrate';
+$password = 'U_FY%jd$J~';
 
-// Criar uma conexão com o banco de dados
-$conn = new mysqli(HOST, USER, PASSWORD, DB, PORT);
-
-// Verificar a conexão
-if ($conn->connect_error) {
-    die("Falha na conexão: " . $conn->connect_error);
-} else {
-    echo "Conexão bem-sucedida!";
+try {
+    // Cria a conexão com o banco de dados
+    $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $username, $password);
+    // Define o modo de erro do PDO para exceção
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e) {
+    // Exibir mensagem de erro de conexão diretamente
+    echo 'Erro de conexão: ' . $e->getMessage();
+    exit;
+    "<script>
+                alert('NAO CONECTOU');
+                
+              </script>";
 }
-
-// Fechar a conexão
-$conn->close();
 ?>
