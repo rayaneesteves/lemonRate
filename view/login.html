@@ -1,38 +1,39 @@
 <!DOCTYPE html>
 <html lang="pt">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Página de Login</title>
     <link rel="stylesheet" href="../css/style.css">
 </head>
+
 <body>
     <div class="container">
         <div class="login-section">
-            <h2 >BEM-VINDO!  </h2>
-           
-            <div id="loginForm">
-                <div class="input-group">
-                    <input type="text" id="username" name="username" placeholder="Usuário" required>
-                </div>
-                <div class="input-group">
-                    <input type="password" id="password" name="password" placeholder="Senha" required>
-                </div>
-                <div class="input-group remember-me">
-                    
-                    
+            <h2>BEM-VINDO! </h2>
 
+            <form action="../model/login.php" method="POST">
+                <div class="input-group">
+                    <input type="email" id="email" name="email" placeholder="Email" required>
                 </div>
-                <button onclick = "location.href='../view/homepage.html'">ENVIAR</button>
-                <button onclick = "location.href='../view/cadastro.html'">CADASTRAR</button>
-                <p></p>
-                <a href=../view/envioEmailJS.html>Esqueci minha senha</a>
+                <div class="input-group">
+                    <input type="password" id="password" name="senha" placeholder="Senha" required>
+                </div>
+                <div class="input-group">
+                    <input class="btn btn-primary" type="submit" value="Entrar">
+                </div>
 
-            </div>
+            </form>
         </div>
-        <div class="illustration-section">
-            <img src="../imagens/lemonlemon2.png" alt="Ilustração">
-        </div>
+        <p></p>
+        <a href=../view/envioEmailJS.html>Esqueci minha senha</a>
+
+    </div>
+    </div>
+    <div class="illustration-section">
+        <img src="../imagens/lemonlemon2.png" alt="Ilustração">
+    </div>
     </div>
     <script src="../controller/script.js"></script>
 </body>

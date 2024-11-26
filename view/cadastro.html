@@ -12,15 +12,15 @@
     <div class="container">
         <div class="login-section">
             <h2>CADASTRO</h2>
-            <form action="../model/insert.php" method="POST">
+            <form action="../model/cadastro.php" method="POST">
                 <div class="input-group">
                     <input type="text" id="username" name="username" placeholder="Usuário" required>
                 </div>
                 <div class="input-group">
-                    <input type="email" id="email" name="email" placeholder="Email" required>
+                    <input type="email" id="email" name="email" placeholder="Email" required >
                 </div>
                 <div class="input-group">
-                    <input type="password" id="password" name="senha" placeholder="Senha" required>
+                    <input type="password" id="password" name="senha" placeholder="Senha" required maxlength="20" minlength="5">
                 </div>
                 <div class="input-group">
                     <input class="btn btn-primary" type="submit" value="Cadastrar" >
@@ -28,6 +28,7 @@
                 </div>
                
             </form>
+
             
         </div>
         <div class="illustration-section">
