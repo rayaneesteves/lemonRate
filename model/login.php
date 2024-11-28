@@ -1,4 +1,5 @@
 <?php
+
 try {
     include_once "conexao.php";
 
@@ -25,6 +26,7 @@ try {
         <script>
             window.location = "../view/homepage.html";
         </script>
+        
     <?php
 
     } else {
