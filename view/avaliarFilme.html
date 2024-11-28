@@ -22,10 +22,13 @@
             function getMovieIdFromUrl() {
                 const urlParams = new URLSearchParams(window.location.search);
                 return urlParams.get('id'); // Obtém o valor do parâmetro "id"
+                
+                
             }
 
             // Função para buscar detalhes do filme usando o ID
             async function getMovieDetails(movieId) {
+                
                 const url = `${BASE_URL}/movie/${movieId}?language=pt-BR&api_key=${API_KEY}`;
                 
                 const options = {
@@ -77,13 +80,12 @@
                 const movie = await getMovieDetails(movieId);
                 displayMovieDetails(movie);
             } else {
+                
                 document.getElementById('movieDetails').innerHTML = '<p>Filme não encontrado.</p>';
             }
         });
 
     </script>
-
-
 
 </body>
 </html>
