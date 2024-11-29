@@ -19,6 +19,8 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         };
 
+        
+
         try {
             const response = await fetch(url, options);
             const data = await response.json();
