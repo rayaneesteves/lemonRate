@@ -20,7 +20,7 @@ function displayMovies(movies) {
 
       // Criando o link que levará à página de avaliação
       const movieLink = document.createElement('a');
-      movieLink.href = `../view/avaliarFilme.html?movieId=${movie.id}`; // Adiciona o ID do filme como parâmetro na URL
+      movieLink.href = `../view/avaliarFilme.html?id=${movie.id}`; 
       
 
       const moviePoster = document.createElement('img');
