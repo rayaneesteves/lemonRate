@@ -75,6 +75,8 @@
             // Pega o ID do filme da URL
             const movieId = getMovieIdFromUrl();
 
+            
+
             // Busca os detalhes do filme e exibe na página
             if (movieId) {
                 const movie = await getMovieDetails(movieId);
