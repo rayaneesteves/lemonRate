@@ -48,20 +48,23 @@
     <a href="../view/recomendacao.html">Para você</a>
   </div>
 
-  <header class="profile-header">
-    <div class="header-content">
-      <div class="profile-avatar-container">
-        <!-- Avatar do usuário -->
-        <img src="../imagens/user-icon.png" alt="User Avatar" id="profile-avatar" class="profile-avatar">
-        <input type="file" id="avatar-input" style="display:none;" accept="image/*">
-      </div>
-      <div class="user-info">
-        <h1 id="profile-name">UsuárioTeste</h1>
+  <div class="profile-container">
+    <div class="profile-header">
+        <img id="profile-avatar" src="../imagens/user-icon.png" alt="Avatar">
+        <h2 id="profile-name-view">Nome do Usuário</h2>
+        <p id="profile-description">Descrição do Usuário</p>
         <button id="edit-profile-btn">Editar Perfil</button>
-        <p id="profile-email" class="profile-email">usuario@teste.com</p>
-      </div>
     </div>
-  </header>
+
+    <div id="edit-actions" style="display: none;">
+        <input id="name-input" type="text" placeholder="Nome">
+        <textarea id="description-input" placeholder="Descrição"></textarea>
+        <input id="avatar-input" type="file" accept="image/*" style="display: none;">
+        <button id="save-profile-btn">Salvar</button>
+        <button id="cancel-edit-btn">Cancelar</button>
+    </div>
+</div>
+
 
 
 
