@@ -1,43 +1,48 @@
 <?php
-
 try {
     include_once "conexao.php";
 
     session_start();
 
-    // Receber os dados vindos do formulário
-    $email = $_POST["email"];
-    $senha = $_POST["senha"];
+    // Receber os dados do formulário
+    $email = isset($_POST["email"]) ? trim($_POST["email"]) : null;
+    $senha = isset($_POST["senha"]) ? trim($_POST["senha"]) : null;
 
-    // Query SQL usando prepared statement
-    $sql = "SELECT * FROM usuário WHERE email = '$email' AND senha = '$senha'";
+    // Validação básica
+    if (empty($email) || empty($senha)) {
+        echo "<script>
+                alert('Por favor, preencha todos os campos.');
+                window.location = '../view/login.html';
+              </script>";
+        exit;
+    }
 
-    $result = $conn->query($sql);
+    // Query segura com prepared statement
+    $sql = "SELECT * FROM usuário WHERE email = ? AND senha = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("ss", $email, $senha);
+    $stmt->execute();
+    $result = $stmt->get_result();
 
+    // Verificar se há usuário correspondente
     if ($result->num_rows > 0) {
         $dadosusuario = $result->fetch_assoc();
 
+        // Criar variáveis de sessão
         $_SESSION["nome"] = $dadosusuario["nome"];
         $_SESSION["email"] = $dadosusuario["email"];
-        $_SESSION["senha"] = $dadosusuario["senha"];
         $_SESSION["status"] = $dadosusuario["status"];
 
-?>
-        <script>
-            window.location = "../view/homepage.html";
-        </script>
-        
-    <?php
-
+        echo "<script>
+                window.location = '../view/homepage.html';
+              </script>";
     } else {
-    ?>
-        <script>
-            alert(" Erro de login ");
-            window.location = "../view/login.html";
-        </script>
-    <?php
+        echo "<script>
+                alert('Usuário ou senha inválidos.');
+                window.location = '../view/login.html';
+              </script>";
     }
-} catch (exception $e) {
-    echo "" . $e->getMessage();
+} catch (Exception $e) {
+    echo "Erro: " . $e->getMessage();
 }
 ?>
