@@ -6,13 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Avaliar Filme</title>
     <link rel="stylesheet" href="../css/avaliar.css">
-
 </head>
 
 <body>
     <h1>Faça sua review do filme...</h1>
     <div id="movieDetails"></div>
 
+    <!-- Formulário para enviar comentários -->
+    <form id="commentForm" method="POST" action="../model/salvarComentario.php">
+        <textarea id="message" name="comentario" placeholder="Deixe sua avaliação" required></textarea><br>
+        <input type="hidden" name="idfilmecomentado" id="movieIdInput">
+        <input type="hidden" name="comentador" id="userIdInput">
+        <button type="submit">Enviar Comentário</button>
+    </form>
 
     <script>
         document.addEventListener('DOMContentLoaded', async function () {
@@ -24,15 +30,11 @@
             function getMovieIdFromUrl() {
                 const urlParams = new URLSearchParams(window.location.search);
                 return urlParams.get('id'); // Obtém o valor do parâmetro "id"
-
-
             }
 
             // Função para buscar detalhes do filme usando o ID
             async function getMovieDetails(movieId) {
-
                 const url = `${BASE_URL}/movie/${movieId}?language=pt-BR&api_key=${API_KEY}`;
-
                 const options = {
                     method: 'GET',
                     headers: {
@@ -52,29 +54,27 @@
 
             // Função para exibir os detalhes do filme
             function displayMovieDetails(movie) {
-    const movieDetailsDiv = document.getElementById('movieDetails');
-    if (!movie) {
-        movieDetailsDiv.innerHTML = '<p>Detalhes do filme não encontrados.</p>';
-        return;
-    }
+                const movieDetailsDiv = document.getElementById('movieDetails');
+                if (!movie) {
+                    movieDetailsDiv.innerHTML = '<p>Detalhes do filme não encontrados.</p>';
+                    return;
+                }
 
-    // Exibe as informações do filme
-    movieDetailsDiv.innerHTML = `
-        <h2>${movie.title}</h2>
-        <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}" style="width: 220px; height: auto;" >
-        <p><strong>Descrição:</strong> ${movie.overview}</p>
-        <p><strong>Data de lançamento:</strong> ${movie.release_date}</p>
-        <p><strong>Nota:</strong> ${movie.vote_average}</p>
-        <h1>Qual sua avaliação para: "${movie.title}"?</h1>
-        <textarea id="message" placeholder="Deixe sua avaliação" required></textarea><br>
-        <a href="../view/comentarios.html?id=${movie.id}">Veja aqui os comentários sobre este filme.</a>
-    `;
+                // Exibe as informações do filme
+                movieDetailsDiv.innerHTML = `
+                    <h2>${movie.title}</h2>
+                    <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}" style="width: 220px; height: auto;" >
+                    <p><strong>Descrição:</strong> ${movie.overview}</p>
+                    <p><strong>Data de lançamento:</strong> ${movie.release_date}</p>
+                    <p><strong>Nota:</strong> ${movie.vote_average}</p>
+                    <h1>Qual sua avaliação para: "${movie.title}"?</h1>
+                    <a href="../view/comentarios.html?id=${movie.id}">Veja aqui os comentários sobre este filme.</a>
+                `;
 
-    // Armazena o título do filme no localStorage
-    localStorage.setItem('movieTitle', movie.title);
-}
-
-
+                // Armazena o título e ID do filme no localStorage para uso futuro
+                localStorage.setItem('movieTitle', movie.title);
+                document.getElementById('movieIdInput').value = movie.id;
+            }
 
             // Pega o ID do filme da URL
             const movieId = getMovieIdFromUrl();
@@ -83,14 +83,15 @@
             if (movieId) {
                 const movie = await getMovieDetails(movieId);
                 displayMovieDetails(movie);
-            } else {
 
+                // Simula ID de usuário logado (substitua pela lógica real de autenticação)
+                const userId = localStorage.getItem('userId') || 1; // Exemplo de ID fixo
+                document.getElementById('userIdInput').value = userId;
+            } else {
                 document.getElementById('movieDetails').innerHTML = '<p>Filme não encontrado.</p>';
             }
         });
-
     </script>
-
 </body>
 
 </html>

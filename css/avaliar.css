@@ -7,6 +7,10 @@
   a{
 color: white;
   }
+  h3{
+    text-align: center;
+    font-size: 30px;
+  }
   body {
     font-family: 'Arial', sans-serif;
     background: linear-gradient(to right, #000000, #006400);
