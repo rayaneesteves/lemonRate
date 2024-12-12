@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Avaliar Filme</title>
     <link rel="stylesheet" href="../css/avaliar.css">
-    
+
 </head>
+
 <body>
     <h1>Faça sua review do filme...</h1>
     <div id="movieDetails"></div>
 
-    
+
     <script>
         document.addEventListener('DOMContentLoaded', async function () {
             const API_KEY = 'ef0bda0322a73c50aaa0ed16de544460'; // Substitua pela sua chave da API
@@ -22,15 +24,15 @@
             function getMovieIdFromUrl() {
                 const urlParams = new URLSearchParams(window.location.search);
                 return urlParams.get('id'); // Obtém o valor do parâmetro "id"
-                
-                
+
+
             }
 
             // Função para buscar detalhes do filme usando o ID
             async function getMovieDetails(movieId) {
-                
+
                 const url = `${BASE_URL}/movie/${movieId}?language=pt-BR&api_key=${API_KEY}`;
-                
+
                 const options = {
                     method: 'GET',
                     headers: {
@@ -50,27 +52,29 @@
 
             // Função para exibir os detalhes do filme
             function displayMovieDetails(movie) {
-                const movieDetailsDiv = document.getElementById('movieDetails');
-                if (!movie) {
-                    movieDetailsDiv.innerHTML = '<p>Detalhes do filme não encontrados.</p>';
-                    return;
-                }
+    const movieDetailsDiv = document.getElementById('movieDetails');
+    if (!movie) {
+        movieDetailsDiv.innerHTML = '<p>Detalhes do filme não encontrados.</p>';
+        return;
+    }
 
-                // Exibe as informações do filme
-                movieDetailsDiv.innerHTML = `
-                    <h2>${movie.title}</h2>
-                    <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}" style="width: 220px; height: auto;" >
-                    <p><strong>Descrição:<strong></p>
-                    <p> ${movie.overview} </p>
-                    <p><strong>Data de lançamento:</strong> ${movie.release_date}</p>
-                    <p><strong>Nota:</strong> ${movie.vote_average}</p>
-                    <h1>Qual sua avaliação para: "${movie.title}"?</h1>
-                    <textarea id="message" placeholder="Deixe sua avaliação" required  ></textarea><br>
+    // Exibe as informações do filme
+    movieDetailsDiv.innerHTML = `
+        <h2>${movie.title}</h2>
+        <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}" style="width: 220px; height: auto;" >
+        <p><strong>Descrição:</strong> ${movie.overview}</p>
+        <p><strong>Data de lançamento:</strong> ${movie.release_date}</p>
+        <p><strong>Nota:</strong> ${movie.vote_average}</p>
+        <h1>Qual sua avaliação para: "${movie.title}"?</h1>
+        <textarea id="message" placeholder="Deixe sua avaliação" required></textarea><br>
+        <a href="../view/comentarios.html?id=${movie.id}">Veja aqui os comentários sobre este filme.</a>
+    `;
 
-                    
-                `;
-            }
-            
+    // Armazena o título do filme no localStorage
+    localStorage.setItem('movieTitle', movie.title);
+}
+
+
 
             // Pega o ID do filme da URL
             const movieId = getMovieIdFromUrl();
@@ -80,7 +84,7 @@
                 const movie = await getMovieDetails(movieId);
                 displayMovieDetails(movie);
             } else {
-                
+
                 document.getElementById('movieDetails').innerHTML = '<p>Filme não encontrado.</p>';
             }
         });
@@ -88,4 +92,5 @@
     </script>
 
 </body>
+
 </html>
