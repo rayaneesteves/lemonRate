@@ -5,6 +5,7 @@
   box-sizing: border-box;
 }
 
+/* Estilização Geral */
 body {
   font-family: 'Arial', sans-serif;
   background: #0B0B0D; /* Fundo escuro elegante */
@@ -16,6 +17,7 @@ body {
   padding: 20px;
 }
 
+/* Cabeçalho */
 header {
   display: flex;
   justify-content: space-between;
@@ -33,6 +35,7 @@ header img {
   height: auto;
 }
 
+/* Links */
 a {
   color: #25843b;
   text-decoration: none;
@@ -40,9 +43,10 @@ a {
 }
 
 a:hover {
-  color: #25843b;
+  color: #366251;
 }
 
+/* Títulos e Textos */
 h1, h2, h3 {
   font-weight: bold;
   text-align: center;
@@ -66,84 +70,6 @@ p {
   color: #C7C7C7;
 }
 
-#movieDetails img {
-  width: 250px;
-  border-radius: 10px;
-  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.6);
-}
-
-form {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin-top: 20px;
-  width: 100%;
-  max-width: 600px;
-}
-
-textarea {
-  padding: 10px;
-  font-size: 1rem;
-  border: none;
-  border-radius: 8px;
-  background: #1C1C1E;
-  color: #FFFFFF;
-  resize: none;
-}
-
-textarea::placeholder {
-  color: #A3A3A6;
-}
-
-button {
-  background-color: #25843b; 
-  ;
-  color: #FFF;
-  border: none;
-  padding: 10px;
-  font-size: 1rem;
-  font-weight: bold;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background 0.3s ease;
-}
-
-button:hover {
-  background-color: #366251;
-}
-
-.movie-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center;
-  margin-top: 20px;
-}
-
-.movie {
-  background: #1C1C1E;
-  padding: 10px;
-  border-radius: 8px;
-  text-align: center;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.movie:hover {
-  transform: scale(1.05);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6);
-}
-
-.movie img {
-  width: 180px;
-  border-radius: 8px;
-}
-
-.movie-title {
-  margin-top: 10px;
-  font-size: 1rem;
-  color: #F5F5F7;
-}
 /* Container Principal do Filme */
 #movieDetails {
   display: flex;
@@ -159,14 +85,12 @@ button:hover {
   width: 100%;
 }
 
-/* Imagem da Capa */
 #movieDetails img {
   width: 250px;
   border-radius: 10px;
   box-shadow: 0 8px 12px rgba(0, 0, 0, 0.6);
 }
 
-/* Informações do Filme */
 .movie-info {
   display: flex;
   flex-direction: column;
@@ -203,3 +127,76 @@ button:hover {
   color: #366251;
 }
 
+/* Formulário */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 20px;
+  width: 100%;
+  max-width: 600px;
+}
+
+textarea {
+  padding: 10px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  background: #1C1C1E;
+  color: #FFFFFF;
+  resize: none;
+}
+
+textarea::placeholder {
+  color: #A3A3A6;
+}
+
+button {
+  background-color: #25843b; 
+  color: #FFF;
+  border: none;
+  padding: 10px;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  background-color: #366251;
+}
+
+/* Container de Filmes Relacionados */
+.movie-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.movie {
+  background: #1C1C1E;
+  padding: 10px;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.movie:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6);
+}
+
+.movie img {
+  width: 180px;
+  border-radius: 8px;
+}
+
+.movie-title {
+  margin-top: 10px;
+  font-size: 1rem;
+  color: #F5F5F7;
+}
