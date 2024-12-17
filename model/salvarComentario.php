@@ -36,7 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <?php
     // Query para inserir o comentário
     $stmt = $conn->prepare("INSERT INTO comentarios (comentador, idfilmecomentado, comentario) VALUES (?, ?, ?)");
-    $stmt->bind_param("iis", $comentador, $idfilmecomentado, $comentario);
+    $stmt->bind_param( $comentador, $idfilmecomentado, $comentario);
     $result = $conn->query($stmt);
 ?>
 <script>
