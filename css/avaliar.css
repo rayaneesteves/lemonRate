@@ -159,26 +159,31 @@ button:hover {
   width: 100%;
 }
 
-/* Imagem da Capa */
-#movieDetails img {
-  width: 250px;
+/* Container Principal do Filme */
+#movieDetails {
+  display: flex;
+  flex-direction: row; /* Alinha imagem e informações lado a lado */
+  align-items: flex-start;
+  gap: 20px;
+  background-color: #1C1C1E;
+  padding: 20px;
   border-radius: 10px;
-  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+  margin: 0 auto; /* Centraliza o bloco */
+  max-width: 900px;
+  width: 100%;
 }
 
-/* Informações do Filme */
 .movie-info {
   display: flex;
   flex-direction: column;
-  gap: 15px; /* Espaçamento entre os textos */
-  justify-content: flex-start;
+  gap: 15px;
   color: #C7C7C7;
 }
 
 .movie-info h2 {
   font-size: 2rem;
   color: #F5F5F7;
-  margin-bottom: 10px;
 }
 
 .movie-info p {
@@ -188,18 +193,29 @@ button:hover {
 }
 
 .movie-info strong {
-  color: #F5F5F7; /* Cor branca para o destaque */
+  color: #F5F5F7;
 }
 
-.movie-info a {
+/* Seção abaixo do filme */
+.additional-section {
+  margin-top: 20px; /* Espaçamento para separar da seção acima */
+  text-align: center;
+}
+
+.additional-section h1 {
+  font-size: 1.5rem;
+  color: #F5F5F7;
+}
+
+.additional-section a {
   color: #25843b;
   text-decoration: none;
   font-weight: bold;
-  transition: color 0.3s;
+  transition: color 0.3s ease;
+  display: block; /* Garante que o link fique em uma nova linha */
   margin-top: 10px;
 }
 
-.movie-info a:hover {
+.additional-section a:hover {
   color: #366251;
 }
-
