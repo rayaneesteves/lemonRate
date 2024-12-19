@@ -12,26 +12,15 @@
     <header>
         <!-- Logo que abre a sidebar -->
         <div class="logo">
-          <img src="../imagens/logo.png" alt="Logo" height="70" width="70" onclick="openSidebar()">
+            <img src="../imagens/logo.png" alt="Logo" height="70" width="70" onclick="openSidebar()">
         </div>
-        
-       
+
         <div class="search-bar">
-          <input type="text" id="searchQuery" placeholder="Digite o nome do filme...">
-          <button onclick="searchMovie()">Buscar
-             <!--Esta dando erros <script>
-              searchQuery.addEventListener('keydown', (event) => {
-                if (event.key === 'Enter') {
-                  searchMovie();
-                }
-              });
-            </script>-->
-          </button>
-          
+            <input type="text" id="searchQuery" placeholder="Digite o nome do filme...">
+            <button onclick="searchMovie()">Buscar</button>
         </div>
-    
-      
-      </header>
+    </header>
+
     <!-- Título Principal -->
     <h1>Faça sua review do filme...</h1>
     <div id="sidebar" class="sidebar">
@@ -43,31 +32,59 @@
         <a href="#">Rank</a>
         <a href="../view/perfil.html">Meu perfil</a>
         <a href="../view/recomendacao.html">Para você</a>
-        <a href="../index.html">Sair</a>  </div>
+        <a href="../index.html">Sair</a>
+    </div>
+
     <!-- Container para os detalhes do filme -->
     <div id="movieDetails"></div>
 
-    <!-- Formulário para envio de comentários -->
-    <form id="commentForm" method="POST" action="../model/salvarComentario.php">
-        <textarea id="message" name="comentario" placeholder="Deixe sua avaliação" required></textarea><br>
-        <input type="hidden" name="idfilmecomentado" id="movieIdInput">
-        <input type="hidden" name="comentador" id="userIdInput">
-        <button type="submit">Enviar Comentário</button>
-    </form>
+    <!-- Botão para abrir a aba de avaliação -->
+    <div id="reviewButtonContainer" style="text-align: center; margin-top: 20px;">
+        <button id="openReviewButton" onclick="openReviewSection()">Deixar sua avaliação</button>
+    </div>
+
+    <!-- Formulário para envio de comentários (inicialmente oculto) -->
+    <div id="reviewSection" style="display: none; margin-top: 20px;">
+        <form id="commentForm" method="POST" action="../model/salvarComentario.php">
+            <textarea id="message" name="comentario" placeholder="Deixe sua avaliação" required></textarea><br>
+
+            <!-- Campo para selecionar a data -->
+            <label for="watchDate">Data em que assistiu:</label>
+            <input type="date" id="watchDate" name="dataAssistida" required><br>
+
+            <!-- Campo para avaliação com estrelas -->
+            <label for="rating">Sua avaliação:</label>
+            <div id="rating">
+                <input type="radio" id="star5" name="nota" value="5">
+                <label for="star5" title="5 estrelas">★</label>
+                <input type="radio" id="star4" name="nota" value="4">
+                <label for="star4" title="4 estrelas">★</label>
+                <input type="radio" id="star3" name="nota" value="3">
+                <label for="star3" title="3 estrelas">★</label>
+                <input type="radio" id="star2" name="nota" value="2">
+                <label for="star2" title="2 estrelas">★</label>
+                <input type="radio" id="star1" name="nota" value="1">
+                <label for="star1" title="1 estrela">★</label>
+            </div>
+
+            <!-- Campos ocultos para IDs -->
+            <input type="hidden" name="idfilmecomentado" id="movieIdInput">
+            <input type="hidden" name="comentador" id="userIdInput">
+            <button type="submit">Enviar Comentário</button>
+        </form>
+    </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', async function () {
-            const API_KEY = 'ef0bda0322a73c50aaa0ed16de544460'; // Substitua pela sua chave da API
+            const API_KEY = 'ef0bda0322a73c50aaa0ed16de544460';
             const BASE_URL = 'https://api.themoviedb.org/3';
             const AUTH_TOKEN = 'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlZjBiZGEwMzIyYTczYzUwYWFhMGVkMTZkZTU0NDQ2MCIsIm5iZiI6MTcyNDk0OTkxNC42NjAyMjEsInN1YiI6IjY2YmUyZTMzOWVjOTYxZGMxZGMzOGM5MyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.RawYxp-idwd9FLsehkLjlqUxb8UudvQWkoz_KYEpErw';
 
-            // Função para obter o ID do filme da URL
             function getMovieIdFromUrl() {
                 const urlParams = new URLSearchParams(window.location.search);
                 return urlParams.get('id');
             }
 
-            // Função para buscar detalhes do filme
             async function getMovieDetails(movieId) {
                 const url = `${BASE_URL}/movie/${movieId}?language=pt-BR&api_key=${API_KEY}`;
                 const options = {
@@ -87,7 +104,6 @@
                 }
             }
 
-            // Função para exibir os detalhes do filme
             function displayMovieDetails(movie) {
                 const movieDetailsDiv = document.getElementById('movieDetails');
                 if (!movie) {
@@ -106,45 +122,47 @@
                             <p><strong>Nota:</strong> ${movie.vote_average}</p>
                         </div>
                     </div>
-                    <div style="margin-top: 20px; text-align: center;">
-                        <h3>Qual sua avaliação para: "${movie.title}"?</h3>
-                        <a href="../view/comentarios.html?id=${movie.id}" 
-                           style="color: #25843b; font-weight: bold; text-decoration: none;">
-                           Veja aqui os comentários sobre este filme.
-                        </a>
-                    </div>
                 `;
 
-                // Preenche o input hidden com o ID do filme
                 document.getElementById('movieIdInput').value = movie.id;
                 localStorage.setItem('movieTitle', movie.title);
             }
 
-            // Pega o ID do filme da URL e carrega as informações
             const movieId = getMovieIdFromUrl();
-
             if (movieId) {
                 const movie = await getMovieDetails(movieId);
                 displayMovieDetails(movie);
 
-                // Simula ID do usuário logado (pode ser ajustado conforme o backend)
-                const userId = localStorage.getItem('userId') || 1; 
-                document.getElementById('userIdInput').value = userId;
+                const userId = localStorage.getItem('userId');
+                if (userId) {
+                    document.getElementById('userIdInput').value = userId;
+                } else {
+                    alert('Você precisa estar logado para avaliar.');
+                    document.getElementById('reviewButtonContainer').style.display = 'none';
+                }
             } else {
                 document.getElementById('movieDetails').innerHTML = '<p>Filme não encontrado.</p>';
             }
         });
-    </script>
-    <script>
+
         function openSidebar() {
-          document.getElementById("sidebar").style.width = "250px";
+            document.getElementById("sidebar").style.width = "250px";
         }
-    
+
         function closeSidebar() {
-          document.getElementById("sidebar").style.width = "0";
+            document.getElementById("sidebar").style.width = "0";
         }
-    
-      </script>
+
+        function openReviewSection() {
+            const userId = localStorage.getItem('userId');
+            if (userId) {
+                document.getElementById('reviewSection').style.display = 'block';
+                document.getElementById('openReviewButton').style.display = 'none';
+            } else {
+                alert('Você precisa estar logado para deixar uma avaliação.');
+            }
+        }
+    </script>
 </body>
 
 </html>
