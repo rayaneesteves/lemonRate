@@ -21,8 +21,9 @@ try {
         $_SESSION["email"] = $dadosusuario["email"];
         $_SESSION["senha"] = $dadosusuario["senha"];
         $_SESSION["status"] = $dadosusuario["status"];
-
+        $_SESSION["idusuario"] = $dadosusuario["idusuario"];
 ?>
+
         <script>
             window.location = "../view/homepage.html";
         </script>
