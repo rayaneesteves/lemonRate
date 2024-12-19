@@ -1,79 +1,281 @@
-
+/* Reset Geral */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  a{
-color: white;
-  }
-  h3{
-    text-align: center;
-    font-size: 30px;
-  }
-  body {
-    font-family: 'Arial', sans-serif;
-    background: linear-gradient(to right, #000000, #006400);
-    color: white;
-  
-    height: 100vh;
-    font-family: 'Times New Roman', Times, serif;
-  }
-  
-  header {
-    display: flex;
-    justify-content: space-between;
-    padding: 10px 20px;
-    background-color: #004000;
-  }
-  
-  header img {
-    width: 40px;
-  }
-  
-  .search-bar input {
-    padding: 5px;
-    border: none;
-    border-radius: 5px;
-  }
-  
-  h1 {
-    font-size: 2rem;
-    margin: 40px 0;
-   
-    font-family: 'Times New Roman', Times, serif;
-  }
-  
-  .movies-container {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-  }
-  
-  .movie {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-  
-  /* Efeito de hover */
-  .movie:hover {
-    transform: scale(1.1); /* Aumenta o tamanho */
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5); /* Adiciona sombra */
-  }
-  
-  .movie img {
-    width: 150px;
-    height: auto;
-    border-radius: 5px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  }
-  
-  .movie-title {
-    margin-top: 10px;
-    font-size: 1rem;
-  }
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Estilização Geral */
+body {
+  font-family: 'Arial', sans-serif;
+  background: #0B0B0D; /* Fundo escuro elegante */
+  color: #FFFFFF;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+/* Cabeçalho */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  background-color: #1C1C1E;
+  padding: 10px 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+header img {
+  width: 50px;
+  height: auto;
+}
+
+/* Links */
+a {
+  color: #25843b;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: #366251;
+}
+
+/* Títulos e Textos */
+h1, h2, h3 {
+  font-weight: bold;
+  text-align: center;
+  margin: 10px 0;
+}
+
+h1 {
+  font-size: 2.5rem;
+  color: #F5F5F7;
+}
+
+p {
+  font-size: 1rem;
+  line-height: 1.5;
+  margin: 10px 0;
+  color: #C7C7C7;
+}
+
+/* Container Principal do Filme */
+#movieDetails {
+  display: flex;
+  flex-direction: row; /* Mantém o layout em linha */
+  align-items: center;
+  gap: 20px; /* Espaçamento entre a imagem e as informações */
+  background-color: #1C1C1E;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+  margin-top: 20px;
+  max-width: 900px;
+  width: 100%;
+}
+
+/* Imagem da Capa */
+#movieDetails img {
+  width: 250px;
+  border-radius: 10px;
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.6);
+}
+
+/* Informações do Filme */
+.movie-info {
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* Espaçamento entre os textos */
+  justify-content: center;
+  color: #C7C7C7;
+}
+
+.movie-info h2 {
+  font-size: 2rem;
+  color: #F5F5F7;
+}
+
+.movie-info p {
+  font-size: 1rem;
+  color: #A3A3A6;
+}
+
+/* Frase de Avaliação e Link */
+.review-section {
+  margin-top: 20px;
+  text-align: center;
+  color: #F5F5F7;
+}
+
+.review-section h2 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.review-section a {
+  display: block; /* Garante que o link fique abaixo */
+  margin-top: 10px;
+  color: #25843b;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.review-section a:hover {
+  color: #366251;
+}
+
+/* Formulário */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 20px;
+  width: 100%;
+  max-width: 600px;
+}
+
+textarea {
+  padding: 10px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  background: #1C1C1E;
+  color: #FFFFFF;
+  resize: none;
+}
+
+textarea::placeholder {
+  color: #A3A3A6;
+}
+
+button {
+  background-color: #25843b; 
+  color: #FFF;
+  border: none;
+  padding: 10px;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  background-color: #366251;
+}
 
 
-  
+.movie-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.movie {
+  background: #1C1C1E;
+  padding: 10px;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.movie:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6);
+}
+
+.movie img {
+  width: 180px;
+  border-radius: 8px;
+}
+
+.movie-title {
+  margin-top: 10px;
+  font-size: 1rem;
+  color: #F5F5F7;
+}
+/* Container Principal do Filme */
+#movieDetails {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 20px; /* Espaçamento entre a imagem e as informações */
+  background-color: #1C1C1E;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+  margin-top: 20px;
+  max-width: 900px;
+  width: 100%;
+}
+
+/* Container Principal do Filme */
+#movieDetails {
+  display: flex;
+  flex-direction: row; /* Alinha imagem e informações lado a lado */
+  align-items: flex-start;
+  gap: 20px;
+  background-color: #1C1C1E;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+  margin: 0 auto; /* Centraliza o bloco */
+  max-width: 900px;
+  width: 100%;
+}
+
+.movie-info {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  color: #C7C7C7;
+}
+
+.movie-info h2 {
+  font-size: 2rem;
+  color: #F5F5F7;
+}
+
+.movie-info p {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #A3A3A6;
+}
+
+.movie-info strong {
+  color: #F5F5F7;
+}
+
+/* Seção abaixo do filme */
+.additional-section {
+  margin-top: 20px; /* Espaçamento para separar da seção acima */
+  text-align: center;
+}
+
+.additional-section h1 {
+  font-size: 1.5rem;
+  color: #F5F5F7;
+}
+
+.additional-section a {
+  color: #25843b;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+  display: block; /* Garante que o link fique em uma nova linha */
+  margin-top: 10px;
+}
+
+.additional-section a:hover {
+  color: #366251;
+}
+

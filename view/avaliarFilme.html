@@ -9,10 +9,13 @@
 </head>
 
 <body>
+    <!-- Título Principal -->
     <h1>Faça sua review do filme...</h1>
+
+    <!-- Container para os detalhes do filme -->
     <div id="movieDetails"></div>
 
-    <!-- Formulário para enviar comentários -->
+    <!-- Formulário para envio de comentários -->
     <form id="commentForm" method="POST" action="../model/salvarComentario.php">
         <textarea id="message" name="comentario" placeholder="Deixe sua avaliação" required></textarea><br>
         <input type="hidden" name="idfilmecomentado" id="movieIdInput">
@@ -24,15 +27,15 @@
         document.addEventListener('DOMContentLoaded', async function () {
             const API_KEY = 'ef0bda0322a73c50aaa0ed16de544460'; // Substitua pela sua chave da API
             const BASE_URL = 'https://api.themoviedb.org/3';
-            const AUTH_TOKEN = 'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlZjBiZGEwMzIyYTczYzUwYWFhMGVkMTZkZTU0NDQ2MCIsIm5iZiI6MTcyNDk0OTkxNC42NjAyMjEsInN1YiI6IjY2YmUyZTMzOWVjOTYxZGMxZGMzOGM5MyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.RawYxp-idwd9FLsehkLjlqUxb8UudvQWkoz_KYEpErw'; // Substitua pelo seu Bearer Token
+            const AUTH_TOKEN = 'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlZjBiZGEwMzIyYTczYzUwYWFhMGVkMTZkZTU0NDQ2MCIsIm5iZiI6MTcyNDk0OTkxNC42NjAyMjEsInN1YiI6IjY2YmUyZTMzOWVjOTYxZGMxZGMzOGM5MyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.RawYxp-idwd9FLsehkLjlqUxb8UudvQWkoz_KYEpErw';
 
             // Função para obter o ID do filme da URL
             function getMovieIdFromUrl() {
                 const urlParams = new URLSearchParams(window.location.search);
-                return urlParams.get('id'); // Obtém o valor do parâmetro "id"
+                return urlParams.get('id');
             }
 
-            // Função para buscar detalhes do filme usando o ID
+            // Função para buscar detalhes do filme
             async function getMovieDetails(movieId) {
                 const url = `${BASE_URL}/movie/${movieId}?language=pt-BR&api_key=${API_KEY}`;
                 const options = {
@@ -60,32 +63,40 @@
                     return;
                 }
 
-                // Exibe as informações do filme
                 movieDetailsDiv.innerHTML = `
-                    <h2>${movie.title}</h2>
-                    <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}" style="width: 220px; height: auto;" >
-                    <p><strong>Descrição:</strong> ${movie.overview}</p>
-                    <p><strong>Data de lançamento:</strong> ${movie.release_date}</p>
-                    <p><strong>Nota:</strong> ${movie.vote_average}</p>
-                    <h1>Qual sua avaliação para: "${movie.title}"?</h1>
-                    <a href="../view/comentarios.html?id=${movie.id}">Veja aqui os comentários sobre este filme.</a>
+                    <div id="movieDetails" style="display: flex; gap: 20px; align-items: center;">
+                        <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}" 
+                             style="width: 220px; height: auto; border-radius: 10px;">
+                        <div>
+                            <h2>${movie.title}</h2>
+                            <p><strong>Descrição:</strong> ${movie.overview}</p>
+                            <p><strong>Data de lançamento:</strong> ${movie.release_date}</p>
+                            <p><strong>Nota:</strong> ${movie.vote_average}</p>
+                        </div>
+                    </div>
+                    <div style="margin-top: 20px; text-align: center;">
+                        <h3>Qual sua avaliação para: "${movie.title}"?</h3>
+                        <a href="../view/comentarios.html?id=${movie.id}" 
+                           style="color: #25843b; font-weight: bold; text-decoration: none;">
+                           Veja aqui os comentários sobre este filme.
+                        </a>
+                    </div>
                 `;
 
-                // Armazena o título e ID do filme no localStorage para uso futuro
-                localStorage.setItem('movieTitle', movie.title);
+                // Preenche o input hidden com o ID do filme
                 document.getElementById('movieIdInput').value = movie.id;
+                localStorage.setItem('movieTitle', movie.title);
             }
 
-            // Pega o ID do filme da URL
+            // Pega o ID do filme da URL e carrega as informações
             const movieId = getMovieIdFromUrl();
 
-            // Busca os detalhes do filme e exibe na página
             if (movieId) {
                 const movie = await getMovieDetails(movieId);
                 displayMovieDetails(movie);
 
-                // Simula ID de usuário logado (substitua pela lógica real de autenticação)
-                const userId = localStorage.getItem('userId') || 1; // Exemplo de ID fixo
+                // Simula ID do usuário logado (pode ser ajustado conforme o backend)
+                const userId = localStorage.getItem('userId') || 1; 
                 document.getElementById('userIdInput').value = userId;
             } else {
                 document.getElementById('movieDetails').innerHTML = '<p>Filme não encontrado.</p>';
