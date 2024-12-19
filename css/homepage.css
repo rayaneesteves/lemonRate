@@ -35,6 +35,7 @@ header {
 .user-icon {
   position: absolute;
     left: 220px;
+    width: 30px;
 
 }
 
