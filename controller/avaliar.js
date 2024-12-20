@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', async function () {
         const movie = await getMovieDetails(movieId);
         displayMovieDetails(movie);
     } else {
-        document.getElementById('movieDetails').innerHTML = '<p>Filme não encontrado.</p>';
+        document.getElementById('movieDetails').innerHTML = '<p></p>';
     }
 });
 

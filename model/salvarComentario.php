@@ -21,7 +21,7 @@ $sql = "INSERT INTO comentários (comentador , idfilmecomentado, comentario, not
     if ($result === TRUE) {
 ?>
         <script>
-            window.location = "../view/avaliarFilme.html";
+            window.location = "../view/comentarios.html";
         </script>
     <?php
 
