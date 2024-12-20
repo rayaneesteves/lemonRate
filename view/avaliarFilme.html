@@ -12,138 +12,70 @@
     <header>
         <!-- Logo que abre a sidebar -->
         <div class="logo">
-          <img src="../imagens/logo.png" alt="Logo" height="70" width="70" onclick="openSidebar()">
+            <img src="../imagens/logo.png" alt="Logo" height="70" width="70" onclick="openSidebar()">
         </div>
-        
-       
+
+        <!-- Barra de pesquisa -->
         <div class="search-bar">
-          <input type="text" id="searchQuery" placeholder="Digite o nome do filme...">
-          <button onclick="searchMovie()">Buscar
-             <!--Esta dando erros <script>
-              searchQuery.addEventListener('keydown', (event) => {
-                if (event.key === 'Enter') {
-                  searchMovie();
-                }
-              });
-            </script>-->
-          </button>
-          
+            <input type="text" id="searchQuery" placeholder="Digite o nome do filme...">
+            <button onclick="searchMovie()">Buscar</button>
         </div>
-    
-      
-      </header>
+    </header>
+
     <!-- Título Principal -->
     <h1>Faça sua review do filme...</h1>
     <div id="sidebar" class="sidebar">
         <a href="javascript:void(0)" class="closebtn" onclick="closeSidebar()"> &times;</a>
-        <a href="../view/homepage.html">Voltar </a>
+        <a href="../view/homepage.html">Voltar</a>
         <a href="#">Adicionar outros usuários</a>
         <a href="#">Publicações recentes</a>
         <a href="#">Curtidas</a>
         <a href="#">Rank</a>
         <a href="../view/perfil.html">Meu perfil</a>
         <a href="../view/recomendacao.html">Para você</a>
-        <a href="../index.html">Sair</a>  </div>
+        <a href="../index.html">Sair</a>
+    </div>
+
     <!-- Container para os detalhes do filme -->
     <div id="movieDetails"></div>
 
-    <!-- Formulário para envio de comentários -->
-    <form id="commentForm" method="POST" action="../model/salvarComentario.php">
-        <textarea id="message" name="comentario" placeholder="Deixe sua avaliação" required></textarea><br>
-        <input type="hidden" name="idfilmecomentado" id="movieIdInput">
-        <button type="submit">Enviar Comentário</button>
-    </form>
+    <!-- Botão para abrir a aba de avaliação -->
+    <div id="reviewButtonContainer">
+        <button id="openReviewButton" onclick="openReviewSection()">Deixar sua avaliação</button>
+    </div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', async function () {
-            const API_KEY = 'ef0bda0322a73c50aaa0ed16de544460'; // Substitua pela sua chave da API
-            const BASE_URL = 'https://api.themoviedb.org/3';
-            const AUTH_TOKEN = 'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlZjBiZGEwMzIyYTczYzUwYWFhMGVkMTZkZTU0NDQ2MCIsIm5iZiI6MTcyNDk0OTkxNC42NjAyMjEsInN1YiI6IjY2YmUyZTMzOWVjOTYxZGMxZGMzOGM5MyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.RawYxp-idwd9FLsehkLjlqUxb8UudvQWkoz_KYEpErw';
+    <!-- Fundo escurecido -->
+    <div id="modalBackground" onclick="closeReviewSection()"></div>
 
-            // Função para obter o ID do filme da URL
-            function getMovieIdFromUrl() {
-                const urlParams = new URLSearchParams(window.location.search);
-                return urlParams.get('id');
-            }
+    <!-- Menu adicional como pop-up -->
+    <div id="reviewSection">
+        <h3>Deixe sua avaliação</h3>
+        <div id="movieInfo" style="margin-bottom: 20px;">
+            <p><strong>Filme:</strong> <span id="movieTitle"></span></p>
+        </div>
 
-            // Função para buscar detalhes do filme
-            async function getMovieDetails(movieId) {
-                const url = `${BASE_URL}/movie/${movieId}?language=pt-BR&api_key=${API_KEY}`;
-                const options = {
-                    method: 'GET',
-                    headers: {
-                        accept: 'application/json',
-                        Authorization: `Bearer ${AUTH_TOKEN}`
-                    }
-                };
+        <!-- Estrelas para avaliação -->
+        <div id="starRating">
+            <span class="star" data-value="1">★</span>
+            <span class="star" data-value="2">★</span>
+            <span class="star" data-value="3">★</span>
+            <span class="star" data-value="4">★</span>
+            <span class="star" data-value="5">★</span>
+        </div>
+        
 
-                try {
-                    const response = await fetch(url, options);
-                    return await response.json();
-                } catch (error) {
-                    console.error('Erro ao buscar detalhes do filme:', error);
-                    return null;
-                }
-            }
+        <!-- Formulário para envio de comentários -->
+        <form id="commentForm" method="POST" action="../model/salvarComentario.php">
+            <textarea id="message" name="comentario" placeholder="Deixe sua avaliação" required></textarea><br>
+            <input type="hidden" name="idfilmecomentado" id="movieIdInput">
+            <input type="hidden" name="avaliacao" id="ratingInput" required maxlength="1" minlength="5">
+            <button type="submit">Enviar Comentário</button>
+        </form>
 
-            // Função para exibir os detalhes do filme
-            function displayMovieDetails(movie) {
-                const movieDetailsDiv = document.getElementById('movieDetails');
-                if (!movie) {
-                    movieDetailsDiv.innerHTML = '<p>Detalhes do filme não encontrados.</p>';
-                    return;
-                }
+        <button id="closeModalButton" onclick="closeReviewSection()">Fechar</button>
+    </div>
 
-                movieDetailsDiv.innerHTML = `
-                    <div id="movieDetails" style="display: flex; gap: 20px; align-items: center;">
-                        <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}" 
-                             style="width: 220px; height: auto; border-radius: 10px;">
-                        <div>
-                            <h2>${movie.title}</h2>
-                            <p><strong>Descrição:</strong> ${movie.overview}</p>
-                            <p><strong>Data de lançamento:</strong> ${movie.release_date}</p>
-                            <p><strong>Nota:</strong> ${movie.vote_average}</p>
-                        </div>
-                    </div>
-                    <div style="margin-top: 20px; text-align: center;">
-                        <h3>Qual sua avaliação para: "${movie.title}"?</h3>
-                        <a href="../view/comentarios.html?id=${movie.id}" 
-                           style="color: #25843b; font-weight: bold; text-decoration: none;">
-                           Veja aqui os comentários sobre este filme.
-                        </a>
-                    </div>
-                `;
-
-                // Preenche o input hidden com o ID do filme
-                document.getElementById('movieIdInput').value = movie.id;
-                localStorage.setItem('movieTitle', movie.title);
-            }
-
-            // Pega o ID do filme da URL e carrega as informações
-            const movieId = getMovieIdFromUrl();
-
-            if (movieId) {
-                const movie = await getMovieDetails(movieId);
-                displayMovieDetails(movie);
-
-                // Simula ID do usuário logado (pode ser ajustado conforme o backend)
-                const userId = localStorage.getItem('userId') || 1; 
-                document.getElementById('userIdInput').value = userId;
-            } else {
-                document.getElementById('movieDetails').innerHTML = '<p>Filme não encontrado.</p>';
-            }
-        });
-    </script>
-    <script>
-        function openSidebar() {
-          document.getElementById("sidebar").style.width = "250px";
-        }
-    
-        function closeSidebar() {
-          document.getElementById("sidebar").style.width = "0";
-        }
-    
-      </script>
+    <script src="../controller/avaliar.js"></script>
 </body>
 
 </html>

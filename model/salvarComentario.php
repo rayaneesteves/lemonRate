@@ -8,10 +8,11 @@ session_start();
 $comentador = $_SESSION['idusuario'];
 $idfilmecomentado = $_POST["idfilmecomentado"];
 $comentario = $_POST["comentario"];
+$nota = $_POST["avaliacao"];
 
 
 // Query SQL usando prepared statement
-$sql = "INSERT INTO comentários (comentador , idfilmecomentado, comentario) VALUES ($comentador, $idfilmecomentado, '$comentario')";
+$sql = "INSERT INTO comentários (comentador , idfilmecomentado, comentario, nota) VALUES ($comentador, $idfilmecomentado, '$comentario', $nota)";
 
 
 
