@@ -76,3 +76,51 @@ stars.forEach(star => {
         }
     });
 });
+function toggleFavorite(button, movieId) {
+    const isFavorited = button.classList.contains('favorited');
+    const userId = 1; // Substitua pelo ID do usuário logado
+  
+    if (isFavorited) {
+      // Remover dos favoritos
+      fetch(`../model/removerFavorito.php`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ userId, movieId })
+      })
+        .then(response => response.json())
+        .then(data => {
+          if (data.success) {
+            button.classList.remove('favorited');
+            button.textContent = '♡'; // Coração vazio
+          } else {
+            alert('Erro ao remover dos favoritos.');
+          }
+        })
+        .catch(error => console.error('Erro ao desfavoritar:', error));
+    } else {
+      // Adicionar aos favoritos
+      fetch(`../model/adicionarFavorito.php`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ userId, movieId })
+      })
+        .then(response => response.json())
+        .then(data => {
+          if (data.success) {
+            button.classList.add('favorited');
+            button.textContent = '❤'; // Coração cheio
+          } else {
+            alert('Erro ao adicionar aos favoritos.');
+          }
+        })
+        .catch(error => console.error('Erro ao favoritar:', error));
+    }
+  }
+  // Função para alternar o estado de favorito no botão
+function toggleFavorite(button) {
+  // Verificar se o botão já foi marcado como favorito
+  button.classList.toggle('favorited');
+}
+
+  
+

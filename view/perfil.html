@@ -9,18 +9,7 @@
 </head>
 
 <body>
-  <header style=" display: flex;
-    justify-content: center; 
-    align-items: center;
-    padding: 10px 20px;
-    background-color: #004000;
-    position: fixed; 
-    top: 0;
-    left: 0;
-    right: 0; 
-    bottom: 93%;
-    z-index: 1001; 
-  ">
+  <header style="display: flex; justify-content: center; align-items: center; padding: 10px 20px; background-color: #004000; position: fixed; top: 0; left: 0; right: 0; bottom: 93%; z-index: 1001;">
     <!-- Logo que abre a sidebar -->
     <div class="logo">
       <img src="../imagens/logo.png" alt="Logo" height="70" width="70" onclick="openSidebar()">
@@ -37,6 +26,7 @@
       <a href="../view/perfil.html"><img src="../imagens/user-icon.png" alt="User" height="35" width="35"></a>
     </div>
   </header>
+
   <div id="sidebar" class="sidebar" style="font-family: 'Times New Roman', Times, serif;">
     <a href="javascript:void(0)" class="closebtn" onclick="closeSidebar()"> &times;</a>
     <a href="../view/homepage.html">Voltar </a>
@@ -63,38 +53,24 @@
     </div>
   </header>
 
-
-
   <main class="profile-main">
     <aside class="profile-sidebar">
-      <!-- Botões "Minhas Avaliações" e "Favoritos" -->
       <nav class="profile-navigation">
         <button class="nav-btn" id="my-reviews-btn">Minhas Avaliações</button>
-        <button class="nav-btn" id="favorites-btn">Favoritos</button>
+        <button class="nav-btn" id="favorites-btn" onclick="loadFavoritedMovies()">Favoritos</button>
         <div>
-          <button class="nav-btn" id="delete-btn" onclick="logout()">Deletar conta</button>
-          <script>
-            function confirmarExclusao() {
-              const confirmacao = confirm("Tem certeza que deseja excluir sua conta?");
-              if (confirmacao) {
-                
-                
-
-                // Adicione aqui a lógica para excluir a conta
-              } else {
-                alert("Ação cancelada.");
-              }
-            }
-          </script>
+          <button class="nav-btn" id="delete-btn" onclick="confirmarExclusao()">Deletar conta</button>
         </div>
-        
-
       </nav>
     </aside>
 
     <section class="profile-content">
+      <div id="favorites-container" style="display: none;">
+        <h2>Filmes Favoritados</h2>
+        <div id="favoritedMovies"></div>
+      </div>
+
       <div class="profile-details">
-        <!-- Detalhes do perfil (Nome e Descrição) -->
         <p><strong>Nome:</strong> <span id="profile-name-view">UsuárioTeste</span></p>
         <input type="text" id="name-input" style="display:none;" value="UsuárioTeste">
 
@@ -103,13 +79,13 @@
         <textarea id="description-input" style="display:none;">Eu sou legal!!!!</textarea>
       </div>
 
-      <!-- Ações de edição -->
       <div class="profile-actions" style="display:none;" id="edit-actions">
         <button id="save-profile-btn">Salvar</button>
         <button id="cancel-edit-btn">Cancelar</button>
       </div>
     </section>
   </main>
+
   <script>
     function openSidebar() {
       document.getElementById("sidebar").style.width = "250px";
@@ -118,9 +94,44 @@
     function closeSidebar() {
       document.getElementById("sidebar").style.width = "0";
     }
-  </script>
 
-  <script src="../controller/perfil.js"></script>
+    function confirmarExclusao() {
+      const confirmacao = confirm("Tem certeza que deseja excluir sua conta?");
+      if (confirmacao) {
+        alert("Conta excluída com sucesso!");
+        // Adicione a lógica de exclusão aqui.
+      } else {
+        alert("Ação cancelada.");
+      }
+    }
+
+    function loadFavoritedMovies() {
+      const userId = 1; // Substitua pelo ID do usuário logado
+      fetch(`../model/listarFavoritos.php?userId=${userId}`)
+        .then(response => response.json())
+        .then(data => {
+          const container = document.getElementById('favoritedMovies');
+          const favoritesSection = document.getElementById('favorites-container');
+          container.innerHTML = '';
+
+          if (data.length > 0) {
+            data.forEach(movie => {
+              const movieElement = document.createElement('p');
+              movieElement.textContent = movie.title; // Exibindo o título do filme
+              container.appendChild(movieElement);
+            });
+          } else {
+            container.textContent = 'Nenhum filme favoritado.';
+          }
+
+          favoritesSection.style.display = 'block';
+        })
+        .catch(error => {
+          console.error('Erro ao carregar filmes:', error);
+        });
+    }
+  </script>
+  
 </body>
 
 </html>
