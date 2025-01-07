@@ -14,7 +14,7 @@ $nota = $_POST["avaliacao"];
 // Query SQL usando prepared statement
 $sql = "INSERT INTO comentários (comentador , idfilmecomentado, comentario, nota) VALUES ($comentador, $idfilmecomentado, '$comentario', $nota)";
 
-echo($sql);
+
 
 
 
