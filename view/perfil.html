@@ -57,7 +57,7 @@
     <aside class="profile-sidebar">
       <nav class="profile-navigation">
         <button class="nav-btn" id="my-reviews-btn">Minhas Avaliações</button>
-        <button class="nav-btn" id="favorites-btn" onclick="loadFavoritedMovies()">Favoritos</button>
+        <button class="nav-btn" id="favorites-btn" onclick="carregarFavoritos()">Favoritos</button>
         <div>
           <button class="nav-btn" id="delete-btn" onclick="confirmarExclusao()">Deletar conta</button>
         </div>
@@ -67,7 +67,7 @@
     <section class="profile-content">
       <div id="favorites-container" style="display: none;">
         <h2>Filmes Favoritados</h2>
-        <div id="favoritedMovies"></div>
+        <div id="favoritos-container"></div>
       </div>
 
       <div class="profile-details">
@@ -85,6 +85,8 @@
       </div>
     </section>
   </main>
+
+  <script src="../js/perfil.js"></script>
 
   <script>
     function openSidebar() {
@@ -104,34 +106,7 @@
         alert("Ação cancelada.");
       }
     }
-
-    function loadFavoritedMovies() {
-      const userId = 1; // Substitua pelo ID do usuário logado
-      fetch(`../model/listarFavoritos.php?userId=${userId}`)
-        .then(response => response.json())
-        .then(data => {
-          const container = document.getElementById('favoritedMovies');
-          const favoritesSection = document.getElementById('favorites-container');
-          container.innerHTML = '';
-
-          if (data.length > 0) {
-            data.forEach(movie => {
-              const movieElement = document.createElement('p');
-              movieElement.textContent = movie.title; // Exibindo o título do filme
-              container.appendChild(movieElement);
-            });
-          } else {
-            container.textContent = 'Nenhum filme favoritado.';
-          }
-
-          favoritesSection.style.display = 'block';
-        })
-        .catch(error => {
-          console.error('Erro ao carregar filmes:', error);
-        });
-    }
   </script>
-  
 </body>
 
 </html>
