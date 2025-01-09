@@ -47,7 +47,7 @@
       </div>
       <div class="user-info">
         <h1 id="profile-name">UsuárioTeste</h1>
-        <button id="edit-profile-btn">Editar Perfil</button>
+        <button id="edit-profile-btn" onclick="toggleEdit(true)">Editar Perfil</button>
         <p id="profile-email" class="profile-email">usuario@teste.com</p>
       </div>
     </div>
@@ -65,28 +65,24 @@
     </aside>
 
     <section class="profile-content">
-      <div id="favorites-container" style="display: none;">
-        <h2>Filmes Favoritados</h2>
-        <div id="favoritos-container"></div>
-      </div>
+      <form method="POST" action="../php/perfil.php">
+        <div class="profile-details">
+          <p><strong>Nome:</strong> 
+            <span id="profile-name-view">UsuárioTeste</span>
+            <input type="text" name="nome" id="name-input" style="display:none;" value="UsuárioTeste">
+          </p>
+          <p><strong>Descrição:</strong></p>
+          <p id="profile-description">Eu sou legal!!!!</p>
+          <textarea name="descricao" id="description-input" style="display:none;">Eu sou legal!!!!</textarea>
+        </div>
 
-      <div class="profile-details">
-        <p><strong>Nome:</strong> <span id="profile-name-view">UsuárioTeste</span></p>
-        <input type="text" id="name-input" style="display:none;" value="UsuárioTeste">
-
-        <p><strong>Descrição:</strong></p>
-        <p id="profile-description">Eu sou legal!!!!</p>
-        <textarea id="description-input" style="display:none;">Eu sou legal!!!!</textarea>
-      </div>
-
-      <div class="profile-actions" style="display:none;" id="edit-actions">
-        <button id="save-profile-btn">Salvar</button>
-        <button id="cancel-edit-btn">Cancelar</button>
-      </div>
+        <div class="profile-actions" style="display:none;" id="edit-actions">
+          <button type="submit" name="salvar" id="save-profile-btn">Salvar</button>
+          <button type="button" id="cancel-edit-btn" onclick="toggleEdit(false)">Cancelar</button>
+        </div>
+      </form>
     </section>
   </main>
-
-  <script src="../js/perfil.js"></script>
 
   <script>
     function openSidebar() {
@@ -104,6 +100,28 @@
         // Adicione a lógica de exclusão aqui.
       } else {
         alert("Ação cancelada.");
+      }
+    }
+
+    function toggleEdit(editMode) {
+      const nameInput = document.getElementById("name-input");
+      const descriptionInput = document.getElementById("description-input");
+      const nameView = document.getElementById("profile-name-view");
+      const descriptionView = document.getElementById("profile-description");
+      const actions = document.getElementById("edit-actions");
+
+      if (editMode) {
+        nameInput.style.display = "inline";
+        descriptionInput.style.display = "block";
+        nameView.style.display = "none";
+        descriptionView.style.display = "none";
+        actions.style.display = "flex";
+      } else {
+        nameInput.style.display = "none";
+        descriptionInput.style.display = "none";
+        nameView.style.display = "inline";
+        descriptionView.style.display = "block";
+        actions.style.display = "none";
       }
     }
   </script>
