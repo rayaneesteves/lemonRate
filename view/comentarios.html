@@ -11,16 +11,14 @@
 <body>
     <div id="movieDetails"></div>
     <script>
-        
         document.addEventListener('DOMContentLoaded', async function () {
             
-    const movieTitle = localStorage.getItem('movieTitle'); // Recupera o título armazenado
+    const movieTitle = localStorage.getItem('movieTitle'); // Recupera o tí­tulo armazenado
 
     const movieDetailsDiv = document.getElementById('movieDetails');
     if (movieTitle) {
         movieDetailsDiv.innerHTML = `
-            <h2>Esses são os comentários do filme: "${movieTitle}"</h2>
-        
+            <h3>Comentários do filme: "${movieTitle}"</h3>
         `;
     } else {
         movieDetailsDiv.innerHTML = '<p>O título do filme não foi encontrado.</p>';
@@ -28,6 +26,7 @@
 });
 
     </script>
+    
 </body>
 
 </html>
