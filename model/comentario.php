@@ -1,21 +1,37 @@
-<?php
-try{
-    include_once "conexao.php";
+<!DOCTYPE html>
+<html lang="en">
 
-    session_start();
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
 
-    $idfilmecomentado = $_SESSION["idfilmecomentado"];
-$comentario = $_SESSION["comentario"];
+<body>
+    <h1>FILME INFO 3</h1>
+    <h3>Comentários</h3>
+    <?php
+    try {
+        include_once "conexao.php";
 
-$sql = "SELECT comentario FROM comentários WHERE idfilmecomentado = '$idfilmecomentado' ";
+        session_start();
 
-$result = $conn->query($sql);
+        $idfilmecomentado = $_SESSION["idfilmecomentado"];
+        $comentario = $_SESSION["comentario"];
 
-echo ($result);
+        $sql = "SELECT comentario FROM comentários WHERE idfilmecomentado = '$idfilmecomentado' ";
+        //echo ($sql);
 
+        $result = $conn->query($sql);
 
-} catch (exception $e) {
-    echo "". $e->getMessage();
+        while ($row = $result->fetch_assoc()) {
+            echo "<p>". $row["comentario"]. "</p>";
+            
+        }
+    } catch (exception $e) {
+        echo "" . $e->getMessage();
+    }
+    ?>
+</body>
 
-}
-?>
+</html>

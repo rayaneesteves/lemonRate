@@ -10,23 +10,19 @@ $idfilmecomentado = $_POST["idfilmecomentado"];
 $comentario = $_POST["comentario"];
 $nota = $_POST["avaliacao"];
 
-$_SESSION["idfilmecomentado"] = $dadoscomentario["idfilmecomentado"];
-$_SESSION["comentario"] = $dadoscomentario["comentario"];
+$_SESSION["idfilmecomentado"] = $idfilmecomentado;
+//$_SESSION["comentario"] = $dadoscomentario["comentario"];
 
 
 // Query SQL usando prepared statement
 $sql = "INSERT INTO comentários (comentador , idfilmecomentado, comentario, nota) VALUES ($comentador, $idfilmecomentado, '$comentario', $nota)";
-
-
-
-
 
     $result = $conn->query($sql);
 
     if ($result === TRUE) {
 ?>
         <script>
-            window.location = "../view/comentarios.html";
+            window.location = "comentario.php";
         </script>
     <?php
 
