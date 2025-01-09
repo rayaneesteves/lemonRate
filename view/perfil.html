@@ -46,9 +46,30 @@
         <input type="file" id="avatar-input" style="display:none;" accept="image/*">
       </div>
       <div class="user-info">
-        <h1 id="profile-name">UsuárioTeste</h1>
+        <?php
+        session_start();
+        include '../model/conexao.php'; // Inclua o arquivo de conexão com o banco de dados
+
+        // Verifica se o usuário está logado
+        if (!isset($_SESSION['user_id'])) {
+          header("Location: login.html");
+          exit();
+        }
+
+        $userId = $_SESSION['user_id']; // ID do usuário logado
+
+        // Busca as informações do usuário no banco
+        $query = "SELECT nome, email FROM usuarios WHERE id = ?";
+        $stmt = $conn->prepare($query);
+        $stmt->bind_param("i", $userId);
+        $stmt->execute();
+        $stmt->bind_result($nome, $email);
+        $stmt->fetch();
+        $stmt->close();
+        ?>
+        <h1 id="profile-name"><?php echo htmlspecialchars($nome); ?></h1>
         <button id="edit-profile-btn" onclick="toggleEdit(true)">Editar Perfil</button>
-        <p id="profile-email" class="profile-email">usuario@teste.com</p>
+        <p id="profile-email" class="profile-email"><?php echo htmlspecialchars($email); ?></p>
       </div>
     </div>
   </header>
@@ -65,15 +86,26 @@
     </aside>
 
     <section class="profile-content">
-      <form method="POST" action="../php/perfil.php">
+      <form method="POST" action="../model/perfil.php">
         <div class="profile-details">
           <p><strong>Nome:</strong> 
-            <span id="profile-name-view">UsuárioTeste</span>
-            <input type="text" name="nome" id="name-input" style="display:none;" value="UsuárioTeste">
+            <span id="profile-name-view"><?php echo htmlspecialchars($nome); ?></span>
+            <input type="text" name="nome" id="name-input" style="display:none;" value="<?php echo htmlspecialchars($nome); ?>">
           </p>
           <p><strong>Descrição:</strong></p>
-          <p id="profile-description">Eu sou legal!!!!</p>
-          <textarea name="descricao" id="description-input" style="display:none;">Eu sou legal!!!!</textarea>
+         
+          <?php
+          // Busca a descrição do usuário
+          $query = "SELECT descricao FROM usuarios WHERE id = ?";
+          $stmt = $conn->prepare($query);
+          $stmt->bind_param("i", $userId);
+          $stmt->execute();
+          $stmt->bind_result($descricao);
+          $stmt->fetch();
+          $stmt->close();
+          ?> 
+          <p id="profile-description"><?php echo htmlspecialchars($descricao); ?></p>
+          <textarea name="descricao" id="description-input" style="display:none;"><?php echo htmlspecialchars($descricao); ?></textarea>
         </div>
 
         <div class="profile-actions" style="display:none;" id="edit-actions">
