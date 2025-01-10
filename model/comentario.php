@@ -5,10 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="../css/avaliar.css">
+
 </head>
 
 <body>
-    <h1>FILME INFO 3</h1>
+<h1>Comentários do filme: </h1>
+
+
     <h3>Comentários</h3>
     <?php
     try {
@@ -16,16 +20,27 @@
 
         session_start();
 
+        
+        $movieTitle = $_SESSION["movieTitle"];
+        $comentadorC = $_SESSION["comentadorC"];
+
         $idfilmecomentado = $_SESSION["idfilmecomentado"];
         $comentario = $_SESSION["comentario"];
 
-        $sql = "SELECT comentario FROM comentários WHERE idfilmecomentado = '$idfilmecomentado' ";
+        $sql = "
+        SELECT comentários.comentario, usuário.nome
+        FROM comentários
+        INNER JOIN usuário ON comentários.comentador = usuário.idusuario
+        WHERE comentários.idfilmecomentado = '$idfilmecomentado'
+    ";
+    
+
         //echo ($sql);
 
         $result = $conn->query($sql);
 
         while ($row = $result->fetch_assoc()) {
-            echo "<p>". $row["comentario"]. "</p>";
+            echo "<p>". $row["nome"]. ": ". $row["comentario"]. "</p>";
             
         }
     } catch (exception $e) {

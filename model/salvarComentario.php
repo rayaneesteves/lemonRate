@@ -11,6 +11,9 @@ $comentario = $_POST["comentario"];
 $nota = $_POST["avaliacao"];
 
 $_SESSION["idfilmecomentado"] = $idfilmecomentado;
+$_SESSION["comentador"] = $comentadorC;
+
+
 //$_SESSION["comentario"] = $dadoscomentario["comentario"];
 
 

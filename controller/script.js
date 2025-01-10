@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', function () {
     
     async function searchMovie() {
         const query = document.getElementById('searchQuery').value.trim();
+        
         if (!query) return;
 
         const url = `${BASE_URL}/search/movie?query=${encodeURIComponent(query)}&include_adult=false&language=pt-BR&page=1&api_key=${API_KEY}`;
