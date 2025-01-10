@@ -13,7 +13,7 @@
 <h1>Comentários do filme: </h1>
 
 
-    <h3>Comentários</h3>
+    
     <?php
     try {
         include_once "conexao.php";
