@@ -46,27 +46,7 @@
         <input type="file" id="avatar-input" style="display:none;" accept="image/*">
       </div>
       <div class="user-info">
-        <?php
-        session_start();
-        include '../model/conexao.php'; // Inclua o arquivo de conexão com o banco de dados
-
-        // Verifica se o usuário está logado
-        if (!isset($_SESSION['user_id'])) {
-          header("Location: login.html");
-          exit();
-        }
-
-        $userId = $_SESSION['user_id']; // ID do usuário logado
-
-        // Busca as informações do usuário no banco
-        $query = "SELECT nome, email FROM usuarios WHERE id = ?";
-        $stmt = $conn->prepare($query);
-        $stmt->bind_param("i", $userId);
-        $stmt->execute();
-        $stmt->bind_result($nome, $email);
-        $stmt->fetch();
-        $stmt->close();
-        ?>
+      <h2 id="username">Nome do Usuário</h2>
         <h1 id="profile-name"><?php echo htmlspecialchars($nome); ?></h1>
         <button id="edit-profile-btn" onclick="toggleEdit(true)">Editar Perfil</button>
         <p id="profile-email" class="profile-email"><?php echo htmlspecialchars($email); ?></p>
@@ -94,16 +74,7 @@
           </p>
           <p><strong>Descrição:</strong></p>
          
-          <?php
-          // Busca a descrição do usuário
-          $query = "SELECT descricao FROM usuarios WHERE id = ?";
-          $stmt = $conn->prepare($query);
-          $stmt->bind_param("i", $userId);
-          $stmt->execute();
-          $stmt->bind_result($descricao);
-          $stmt->fetch();
-          $stmt->close();
-          ?> 
+        
           <p id="profile-description"><?php echo htmlspecialchars($descricao); ?></p>
           <textarea name="descricao" id="description-input" style="display:none;"><?php echo htmlspecialchars($descricao); ?></textarea>
         </div>
