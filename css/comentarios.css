@@ -27,7 +27,7 @@ h1 {
     background: rgba(29, 53, 87, 0.9);
     border-radius: 15px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-    border: 2px solid #457b9d;
+    border: 2px solid #579d45;
 }
 
 /* Cada comentário */
@@ -35,7 +35,7 @@ h1 {
     display: flex;
     align-items: flex-start;
     gap: 20px;
-    background: rgba(69, 123, 157, 0.9);
+    background: rgba(72, 157, 69, 0.9);
     padding: 20px;
     margin-bottom: 20px;
     border-radius: 12px;
@@ -61,7 +61,7 @@ h1 {
 
 /* Nome do autor */
 .comment strong {
-    color: #f4a261;
+    color: #1ea134;
     font-weight: bold;
     font-size: 1.2rem;
     margin-bottom: 5px;
@@ -83,8 +83,8 @@ h1 {
 /* Botão de ação (opcional, caso precise no futuro) */
 .button {
     display: inline-block;
-    background: #f4a261;
-    color: #1d3557;
+    background: #1f8d09;
+    color: #000000;
     padding: 10px 20px;
     border-radius: 8px;
     font-size: 1rem;
@@ -97,7 +97,7 @@ h1 {
 
 /* Hover no botão */
 .button:hover {
-    background: #e76f51;
+    background: #194209;
     color: #f1faee;
 }
 
