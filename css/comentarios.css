@@ -1,0 +1,55 @@
+/* Estilo geral da página */
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to bottom, #0a0, #040);
+    margin: 0;
+    padding: 20px;
+    color: #fff;
+}
+
+/* Título da página */
+h1 {
+    text-align: center;
+    font-size: 2rem;
+    color: #fff;
+    margin-bottom: 30px;
+}
+
+/* Contêiner de comentários */
+.comments {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background: #111;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Cada comentário */
+.comment {
+    background: #222;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    border: 1px solid #444;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+/* Último comentário sem margem inferior */
+.comment:last-child {
+    margin-bottom: 0;
+}
+
+/* Nome do autor */
+.comment strong {
+    color: #32cd32; /* Verde claro */
+    font-weight: bold;
+}
+
+/* Texto do comentário */
+.comment p {
+    margin: 0;
+    line-height: 1.5;
+    font-size: 1rem;
+    color: #ddd;
+}

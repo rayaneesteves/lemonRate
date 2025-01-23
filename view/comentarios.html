@@ -5,10 +5,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Comentários</title>
-    <link rel="stylesheet" href="../css/avaliar.css">
+    <link rel="stylesheet" href="../css/comentarios.css">
 </head>
 
 <body>
+    <div class="comentarios">
+        <?php
+        // Exemplo de como os comentários são puxados do banco
+        while ($row = $result->fetch_assoc()) {
+            echo '<div class="comment">';
+            echo '<p><strong>' . htmlspecialchars($row['nome']) . ':</strong> ' . htmlspecialchars($row['comentario']) . '</p>';
+            echo '</div>';
+        }
+        ?>
+    </div>
     
     
 </body>
