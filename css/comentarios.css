@@ -1,38 +1,78 @@
 /* Estilo geral da página */
 body {
-    font-family: Arial, sans-serif;
-    background: linear-gradient(to bottom, #0a0, #040);
+    font-family: 'Roboto', Arial, sans-serif;
+    background: linear-gradient(135deg, #1d3557, #457b9d);
     margin: 0;
     padding: 20px;
-    color: #fff;
+    color: #f1faee;
+    line-height: 1.6;
+    overflow-x: hidden;
 }
 
 /* Título da página */
 h1 {
     text-align: center;
-    font-size: 2rem;
-    color: #fff;
-    margin-bottom: 30px;
+    font-size: 3rem;
+    color: #f1faee;
+    margin-bottom: 40px;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+    letter-spacing: 1px;
 }
 
 /* Contêiner de comentários */
 .comments {
-    max-width: 800px;
+    max-width: 900px;
     margin: 0 auto;
-    padding: 20px;
-    background: #111;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    padding: 25px;
+    background: rgba(29, 53, 87, 0.9);
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    border: 2px solid #457b9d;
 }
 
 /* Cada comentário */
 .comment {
-    background: #222;
-    padding: 15px;
-    margin-bottom: 15px;
-    border-radius: 8px;
-    border: 1px solid #444;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    background: rgba(69, 123, 157, 0.9);
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+/* Hover em cada comentário */
+.comment:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.5);
+    background: rgba(69, 123, 157, 1);
+}
+
+/* Avatar (ícone para o usuário) */
+.comment::before {
+    content: "👤";
+    font-size: 2.5rem;
+    color: #f1faee;
+    display: block;
+    align-self: center;
+}
+
+/* Nome do autor */
+.comment strong {
+    color: #f4a261;
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+    display: block;
+}
+
+/* Texto do comentário */
+.comment p {
+    margin: 0;
+    font-size: 1rem;
+    color: #f1faee;
 }
 
 /* Último comentário sem margem inferior */
@@ -40,16 +80,52 @@ h1 {
     margin-bottom: 0;
 }
 
-/* Nome do autor */
-.comment strong {
-    color: #32cd32; /* Verde claro */
+/* Botão de ação (opcional, caso precise no futuro) */
+.button {
+    display: inline-block;
+    background: #f4a261;
+    color: #1d3557;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 1rem;
     font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    margin-top: 20px;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Texto do comentário */
-.comment p {
-    margin: 0;
-    line-height: 1.5;
-    font-size: 1rem;
-    color: #ddd;
+/* Hover no botão */
+.button:hover {
+    background: #e76f51;
+    color: #f1faee;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    body {
+        padding: 15px;
+    }
+
+    h1 {
+        font-size: 2.2rem;
+    }
+
+    .comments {
+        padding: 20px;
+    }
+
+    .comment {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .comment::before {
+        font-size: 2rem;
+    }
+
+    .button {
+        width: 100%;
+        text-align: center;
+    }
 }
