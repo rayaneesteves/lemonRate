@@ -1,7 +1,7 @@
 /* Estilo geral da página */
 body {
     font-family: 'Roboto', Arial, sans-serif;
-    background: linear-gradient(135deg, #1d3557, #457b9d);
+    background: linear-gradient(135deg, #1d5737,#006400);
     margin: 0;
     padding: 20px;
     color: #f1faee;
@@ -47,7 +47,7 @@ h1 {
 .comment:hover {
     transform: translateY(-5px);
     box-shadow: 0 12px 25px rgba(0, 0, 0, 0.5);
-    background: rgba(69, 123, 157, 1);
+    background: rgb(79, 157, 69);
 }
 
 /* Avatar (ícone para o usuário) */
