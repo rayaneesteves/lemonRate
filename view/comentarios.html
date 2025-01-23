@@ -1,26 +1,75 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Comentários</title>
-    <link rel="stylesheet" href="../css/comentarios.css">
+    <link rel="stylesheet" href="../css/avaliar.css">
 </head>
 
 <body>
-    <div class="comentarios">
-        <?php
-        // Exemplo de como os comentários são puxados do banco
-        while ($row = $result->fetch_assoc()) {
-            echo '<div class="comment">';
-            echo '<p><strong>' . htmlspecialchars($row['nome']) . ':</strong> ' . htmlspecialchars($row['comentario']) . '</p>';
-            echo '</div>';
-        }
-        ?>
-    </div>
-    
-    
+    <header>
+        <h1>Comentários sobre o Filme</h1>
+    </header>
+
+    <main>
+        <section class="comments">
+            <!-- Os comentários serão carregados dinamicamente pelo PHP -->
+            <!-- O PHP já está puxando os comentários do banco de dados no arquivo PHP separado -->
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 Comentários - Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const API_KEY = '9545a79b119db52e58d6ac087fd08185'; // Substitua pela sua chave da API
+            const BASE_URL = 'https://api.themoviedb.org/3';
+            const AUTH_TOKEN = 'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlZjBiZGEwMzIyYTczYzUwYWFhMGVkMTZkZTU0NDQ2MCIsIm5iZiI6MTcyNDk0OTkxNC42NjAyMjEsInN1YiI6IjY2YmUyZTMzOWVjOTYxZGMxZGMzOGM5MyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.RawYxp-idwd9FLsehkLjlqUxb8UudvQWkoz_KYEpErw'; // Bearer Token
+
+            async function getMovieTitle(movieId) {
+                const url = `${BASE_URL}/movie/${movieId}?language=pt-BR&api_key=${API_KEY}`;
+                const options = {
+                    method: 'GET',
+                    headers: {
+                        accept: 'application/json',
+                        Authorization: `Bearer ${AUTH_TOKEN}`
+                    }
+                };
+
+                try {
+                    const response = await fetch(url, options);
+                    if (!response.ok) {
+                        throw new Error(`Erro ao buscar o filme. Código: ${response.status}`);
+                    }
+                    const data = await response.json();
+                    return data.title; // Retorna o título do filme
+                } catch (error) {
+                    console.error('Erro ao buscar título do filme:', error);
+                    return null;
+                }
+            }
+
+            // Exemplo de uso:
+            async function displayMovieTitle() {
+                const movieId = <?php echo $idfilmecomentado; ?>; // Substitua pelo ID real do filme
+                const title = await getMovieTitle(movieId);
+                if (title) {
+                    document.body.innerHTML += `<h1>Título do filme: ${title}</h1>`;
+                } else {
+                    document.body.innerHTML += `<h1>Não foi possível obter o título do filme.</h1>`;
+                }
+            }
+
+            // Chama a função para exibir o título
+            displayMovieTitle();
+        });
+    </script>
 </body>
 
 </html>
