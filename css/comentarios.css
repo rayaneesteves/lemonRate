@@ -24,10 +24,10 @@ h1 {
     max-width: 900px;
     margin: 0 auto;
     padding: 25px;
-    background: rgba(29, 53, 87, 0.9);
+    background: #004000;
     border-radius: 15px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-    border: 2px solid #457b9d;
+    border: 2px solid #004000;
 }
 
 /* Cada comentário */
@@ -35,7 +35,7 @@ h1 {
     display: flex;
     align-items: flex-start;
     gap: 20px;
-    background: rgba(69, 123, 157, 0.9);
+    background: #004000;
     padding: 20px;
     margin-bottom: 20px;
     border-radius: 12px;
